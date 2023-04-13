@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/installer_filter_options/installer_filter_options_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'inst_listing_for_installer_model.dart';
