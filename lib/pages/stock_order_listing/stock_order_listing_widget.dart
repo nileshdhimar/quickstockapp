@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/installer_filter_options/installer_filter_options_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -187,14 +188,35 @@ class _StockOrderListingWidgetState extends State<StockOrderListingWidget> {
                                     buttonSize: 46.0,
                                     fillColor: FlutterFlowTheme.of(context)
                                         .loginTxtBox,
+                                    hoverColor:
+                                        FlutterFlowTheme.of(context).textbox,
+                                    hoverIconColor: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     icon: Icon(
-                                      Icons.filter_alt_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .txtBoxBdr,
-                                      size: 26.0,
+                                      Icons.tune,
+                                      color: Color(0xFFB9B6E2),
+                                      size: 24.0,
                                     ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
+                                    onPressed: () async {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        enableDrag: false,
+                                        context: context,
+                                        builder: (bottomSheetContext) {
+                                          return GestureDetector(
+                                            onTap: () => FocusScope.of(context)
+                                                .requestFocus(_unfocusNode),
+                                            child: Padding(
+                                              padding: MediaQuery.of(
+                                                      bottomSheetContext)
+                                                  .viewInsets,
+                                              child:
+                                                  InstallerFilterOptionsWidget(),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
                                     },
                                   ),
                                 ],

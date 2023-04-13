@@ -35,3 +35,11 @@ export '/stock_order_others/stock_order_others_widget.dart'
     show StockOrderOthersWidget;
 export '/stock_transfer_stock_out/stock_transfer_stock_out_widget.dart'
     show StockTransferStockOutWidget;
+export '/pages/stock_transfer_detail/stock_transfer_detail_widget.dart'
+    show StockTransferDetailWidget;
+export '/pages/stock_transfer_out_scan/stock_transfer_out_scan_widget.dart'
+    show StockTransferOutScanWidget;
+export '/stock_transfer_stock_in/stock_transfer_stock_in_widget.dart'
+    show StockTransferStockInWidget;
+export '/pages/stock_transfer_detail_verified/stock_transfer_detail_verified_widget.dart'
+    show StockTransferDetailVerifiedWidget;

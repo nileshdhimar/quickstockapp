@@ -140,6 +140,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'StockTransfer-StockOut',
           path: '/stockTransferStockOut',
           builder: (context, params) => StockTransferStockOutWidget(),
+        ),
+        FFRoute(
+          name: 'StockTransfer-Detail',
+          path: '/stockTransferDetail',
+          builder: (context, params) => StockTransferDetailWidget(),
+        ),
+        FFRoute(
+          name: 'StockTransfer-Out-Scan',
+          path: '/stockTransferOutScan',
+          builder: (context, params) => StockTransferOutScanWidget(),
+        ),
+        FFRoute(
+          name: 'StockTransfer-StockIn',
+          path: '/stockTransferStockIn',
+          builder: (context, params) => StockTransferStockInWidget(),
+        ),
+        FFRoute(
+          name: 'StockTransfer-Detail-Verified',
+          path: '/stockTransferDetailVerified',
+          builder: (context, params) => StockTransferDetailVerifiedWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

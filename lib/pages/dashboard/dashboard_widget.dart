@@ -217,34 +217,39 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
-                            child: Container(
-                              width: 310.0,
-                              decoration: BoxDecoration(
-                                color: Color(0x00FFFFFF),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 20.0, 0.0),
-                                    child: Image.asset(
-                                      'assets/images/1_2.png',
-                                      width: 35.0,
-                                      height: 35.0,
-                                      fit: BoxFit.cover,
+                            child: InkWell(
+                              onTap: () async {
+                                context.pushNamed('StockTransfer-StockOut');
+                              },
+                              child: Container(
+                                width: 310.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x00FFFFFF),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 20.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/1_2.png',
+                                        width: 35.0,
+                                        height: 35.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'Stock Transfer',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'DM Sans',
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ],
+                                    Text(
+                                      'Stock Transfer',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'DM Sans',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

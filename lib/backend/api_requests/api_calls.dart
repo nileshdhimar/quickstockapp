@@ -39,6 +39,36 @@ class IsTenantAvailableCall {
       );
 }
 
+class AuthenticateCall {
+  static Future<ApiCallResponse> call({
+    String? userName = '',
+    String? password = '',
+    int? tenantId,
+  }) {
+    final body = '''
+{
+  "userNameOrEmailAddress": "${userName}",
+  "password": "${password}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Authenticate',
+      apiUrl: 'https://app.thesolarproduct.com/api/TokenAuth/Authenticate',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Abp.TenantId': '${tenantId}',
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

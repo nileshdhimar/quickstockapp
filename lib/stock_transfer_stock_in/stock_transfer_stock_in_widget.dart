@@ -10,20 +10,20 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'stock_transfer_stock_out_model.dart';
-export 'stock_transfer_stock_out_model.dart';
+import 'stock_transfer_stock_in_model.dart';
+export 'stock_transfer_stock_in_model.dart';
 
-class StockTransferStockOutWidget extends StatefulWidget {
-  const StockTransferStockOutWidget({Key? key}) : super(key: key);
+class StockTransferStockInWidget extends StatefulWidget {
+  const StockTransferStockInWidget({Key? key}) : super(key: key);
 
   @override
-  _StockTransferStockOutWidgetState createState() =>
-      _StockTransferStockOutWidgetState();
+  _StockTransferStockInWidgetState createState() =>
+      _StockTransferStockInWidgetState();
 }
 
-class _StockTransferStockOutWidgetState
-    extends State<StockTransferStockOutWidget> with TickerProviderStateMixin {
-  late StockTransferStockOutModel _model;
+class _StockTransferStockInWidgetState extends State<StockTransferStockInWidget>
+    with TickerProviderStateMixin {
+  late StockTransferStockInModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -46,7 +46,7 @@ class _StockTransferStockOutWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => StockTransferStockOutModel());
+    _model = createModel(context, () => StockTransferStockInModel());
 
     _model.textController ??= TextEditingController();
   }
@@ -507,7 +507,7 @@ class _StockTransferStockOutWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .txtBoxBdr,
                                               icon: FaIcon(
-                                                FontAwesomeIcons.boxOpen,
+                                                FontAwesomeIcons.box,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .buttonIcon,
@@ -521,7 +521,7 @@ class _StockTransferStockOutWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 5.0, 0.0, 0.0),
                                               child: Text(
-                                                'Stock Out',
+                                                'Stock In',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -543,300 +543,6 @@ class _StockTransferStockOutWidgetState
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 5.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).appBar,
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 15.0, 15.0, 15.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Transfer No. :',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'DM Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      '1389',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Tracking No. :',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'DM Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      '341499337',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Date :',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'DM Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      '23-02-2023',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 5.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      'Transfer By :',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Sid Chen',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'DM Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 25.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 50.0,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .txtBoxBdr,
-                                            icon: FaIcon(
-                                              FontAwesomeIcons.boxOpen,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .buttonIcon,
-                                              size: 18.0,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 5.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Stock Out',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'DM Sans',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .buttonIcon,
-                                                        fontSize: 12.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
                         ),
                       ),
                     ),
@@ -872,11 +578,9 @@ class _StockTransferStockOutWidgetState
                                   0.0, 0.0, 0.0, 10.0),
                               child: FaIcon(
                                 FontAwesomeIcons.boxOpen,
-                                color: FlutterFlowTheme.of(context)
-                                    .bottomMenuActive,
+                                color: FlutterFlowTheme.of(context).bottomMenu,
                                 size: 32.0,
-                              ).animateOnPageLoad(
-                                  animationsMap['iconOnPageLoadAnimation']!),
+                              ),
                             ),
                             Text(
                               'Stock Out',
@@ -884,8 +588,8 @@ class _StockTransferStockOutWidgetState
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'DM Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .bottomMenuActive,
+                                    color:
+                                        FlutterFlowTheme.of(context).bottomMenu,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -901,7 +605,7 @@ class _StockTransferStockOutWidgetState
                         ),
                         child: InkWell(
                           onTap: () async {
-                            context.pushNamed('StockTransfer-StockIn');
+                            context.pushNamed('StockOrder-Others');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -912,10 +616,11 @@ class _StockTransferStockOutWidgetState
                                     0.0, 0.0, 0.0, 10.0),
                                 child: FaIcon(
                                   FontAwesomeIcons.box,
-                                  color:
-                                      FlutterFlowTheme.of(context).bottomMenu,
+                                  color: FlutterFlowTheme.of(context)
+                                      .bottomMenuActive,
                                   size: 32.0,
-                                ),
+                                ).animateOnPageLoad(
+                                    animationsMap['iconOnPageLoadAnimation']!),
                               ),
                               Text(
                                 'Stock In',
@@ -924,7 +629,7 @@ class _StockTransferStockOutWidgetState
                                     .override(
                                       fontFamily: 'DM Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .bottomMenu,
+                                          .bottomMenuActive,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
