@@ -70,6 +70,7 @@ abstract class FlutterFlowTheme {
   late Color backgroundComponents;
   late Color bottomMenuActive;
   late Color bottomMenu;
+  late Color buttonIcon;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -175,6 +176,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color backgroundComponents = Color(0xFF1D2428);
   late Color bottomMenuActive = Color(0xFFFFFFFF);
   late Color bottomMenu = Color(0xFFC2C5F2);
+  late Color buttonIcon = Color(0xFF7367EE);
 }
 
 abstract class Typography {
@@ -339,6 +341,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color backgroundComponents = Color(0xFF1D2428);
   late Color bottomMenuActive = Color(0xFFFFFFFF);
   late Color bottomMenu = Color(0xFFC2C5F2);
+  late Color buttonIcon = Color(0xFFFFFFFF);
 }
 
 extension TextStyleHelper on TextStyle {

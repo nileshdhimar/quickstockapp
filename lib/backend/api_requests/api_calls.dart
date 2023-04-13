@@ -33,13 +33,9 @@ class IsTenantAvailableCall {
     );
   }
 
-  static dynamic tenentID(dynamic response) => getJsonField(
+  static dynamic tenentId(dynamic response) => getJsonField(
         response,
         r'''$.result.tenantId''',
-      );
-  static dynamic state(dynamic response) => getJsonField(
-        response,
-        r'''$.result.state''',
       );
 }
 
