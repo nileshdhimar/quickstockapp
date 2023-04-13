@@ -1,7 +1,10 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'splash_model.dart';
@@ -14,11 +17,29 @@ class SplashWidget extends StatefulWidget {
   _SplashWidgetState createState() => _SplashWidgetState();
 }
 
-class _SplashWidgetState extends State<SplashWidget> {
+class _SplashWidgetState extends State<SplashWidget>
+    with TickerProviderStateMixin {
   late SplashModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+
+  final animationsMap = {
+    'imageOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      reverse: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        RotateEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 6500.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -76,7 +97,8 @@ class _SplashWidgetState extends State<SplashWidget> {
                       'assets/images/sales-drive-logo_4.png',
                       width: 185.0,
                       fit: BoxFit.cover,
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['imageOnPageLoadAnimation']!),
                   ],
                 ),
               ),

@@ -10,19 +10,20 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'stock_order_verify_model.dart';
-export 'stock_order_verify_model.dart';
+import 'stock_transfer_stock_out_model.dart';
+export 'stock_transfer_stock_out_model.dart';
 
-class StockOrderVerifyWidget extends StatefulWidget {
-  const StockOrderVerifyWidget({Key? key}) : super(key: key);
+class StockTransferStockOutWidget extends StatefulWidget {
+  const StockTransferStockOutWidget({Key? key}) : super(key: key);
 
   @override
-  _StockOrderVerifyWidgetState createState() => _StockOrderVerifyWidgetState();
+  _StockTransferStockOutWidgetState createState() =>
+      _StockTransferStockOutWidgetState();
 }
 
-class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
-    with TickerProviderStateMixin {
-  late StockOrderVerifyModel _model;
+class _StockTransferStockOutWidgetState
+    extends State<StockTransferStockOutWidget> with TickerProviderStateMixin {
+  late StockTransferStockOutModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -45,12 +46,7 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => StockOrderVerifyModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      context.pushNamed('Dashboard');
-    });
+    _model = createModel(context, () => StockTransferStockOutModel());
 
     _model.textController ??= TextEditingController();
   }
@@ -88,7 +84,7 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
             },
           ),
           title: Text(
-            'Stock Orders',
+            'Stock Transfer',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'DM Sans',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -271,64 +267,13 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 12.0, 15.0, 2.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'SOL Mart',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'DM Sans',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 18.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.65, 0.0),
-                                      child: Icon(
-                                        Icons.keyboard_arrow_right_outlined,
-                                        color: FlutterFlowTheme.of(context)
-                                            .txtBoxBdr,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Divider(
-                                thickness: 1.0,
-                                color: FlutterFlowTheme.of(context).lineColor,
-                              ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 5.0, 15.0, 15.0),
+                                        15.0, 15.0, 15.0, 15.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -356,7 +301,7 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          'Ord. No :',
+                                                          'Transfer No :',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -377,7 +322,7 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                                                         MainAxisSize.max,
                                                     children: [
                                                       Text(
-                                                        '7112',
+                                                        '1390',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -444,116 +389,6 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                                             ),
                                           ],
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                5.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Inv. No :',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                fontSize: 14.0,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'AS70510',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'DM Sans',
-                                                              fontSize: 14.0,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Cont. No :',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'DM Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      'AS70510',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -587,9 +422,45 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                         decoration: BoxDecoration(
                           color: Color(0x00EEEEEE),
                         ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Icon(
+                                Icons.qr_code_scanner_rounded,
+                                color: FlutterFlowTheme.of(context)
+                                    .bottomMenuActive,
+                                size: 32.0,
+                              ).animateOnPageLoad(
+                                  animationsMap['iconOnPageLoadAnimation']!),
+                            ),
+                            Text(
+                              'Scan',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'DM Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .bottomMenuActive,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 100.0,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          color: Color(0x00EEEEEE),
+                        ),
                         child: InkWell(
                           onTap: () async {
-                            context.pushNamed('StockOrder-Scan');
+                            context.pushNamed('StockOrder-Verify');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -599,14 +470,14 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Icon(
-                                  Icons.qr_code_scanner_rounded,
+                                  Icons.verified_user_outlined,
                                   color:
                                       FlutterFlowTheme.of(context).bottomMenu,
                                   size: 32.0,
                                 ),
                               ),
                               Text(
-                                'Scan',
+                                'Verify',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -619,42 +490,6 @@ class _StockOrderVerifyWidgetState extends State<StockOrderVerifyWidget>
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color: Color(0x00EEEEEE),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Icon(
-                                Icons.verified_user_outlined,
-                                color: FlutterFlowTheme.of(context)
-                                    .bottomMenuActive,
-                                size: 32.0,
-                              ).animateOnPageLoad(
-                                  animationsMap['iconOnPageLoadAnimation']!),
-                            ),
-                            Text(
-                              'Verify',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'DM Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .bottomMenuActive,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ],
                         ),
                       ),
                       Container(

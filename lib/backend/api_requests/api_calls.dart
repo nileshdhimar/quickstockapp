@@ -11,7 +11,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class IsTenantAvailableCall {
   static Future<ApiCallResponse> call({
-    String? tenancyName = '',
+    String? tenancyName = 'null',
   }) {
     final body = '''
 {

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -72,9 +73,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'StockOrderListing',
           path: '/stockOrderListing',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'StockOrderListing')
-              : StockOrderListingWidget(),
+          builder: (context, params) => StockOrderListingWidget(),
         ),
         FFRoute(
           name: 'InstListingForInstaller',
@@ -124,25 +123,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => OrderItemDetailPanelNoWidget(),
         ),
         FFRoute(
-          name: 'StockOrderListingCopy',
-          path: '/stockOrderListingCopy',
-          builder: (context, params) => StockOrderListingCopyWidget(),
-        ),
-        FFRoute(
-          name: 'StockOrderListingCopy2',
-          path: '/stockOrderListingCopy2',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'StockOrderListingCopy2')
-              : StockOrderListingCopy2Widget(),
-        ),
-        FFRoute(
-          name: 'StockOrderListingCopy3',
-          path: '/stockOrderListingCopy3',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'StockOrderListingCopy3')
-              : StockOrderListingCopy3Widget(),
-        ),
-        FFRoute(
           name: 'StockOrder-Scan',
           path: '/stockOrderScan',
           builder: (context, params) => StockOrderScanWidget(),
@@ -156,6 +136,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'StockOrder-Others',
           path: '/stockOrderOthers',
           builder: (context, params) => StockOrderOthersWidget(),
+        ),
+        FFRoute(
+          name: 'StockTransfer-StockOut',
+          path: '/stockTransferStockOut',
+          builder: (context, params) => StockTransferStockOutWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
