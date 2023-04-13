@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/invalid_username_password/invalid_username_password_widget.dart';
 import '/pages/switch_tenant/switch_tenant_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -392,23 +391,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                         if ((_model.apiResult4rk?.succeeded ?? true)) {
                           context.pushNamed('Dashboard');
                         } else {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            enableDrag: false,
+                          await showDialog(
                             context: context,
-                            builder: (bottomSheetContext) {
-                              return GestureDetector(
-                                onTap: () => FocusScope.of(context)
-                                    .requestFocus(_unfocusNode),
-                                child: Padding(
-                                  padding: MediaQuery.of(bottomSheetContext)
-                                      .viewInsets,
-                                  child: InvalidUsernamePasswordWidget(),
-                                ),
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Error'),
+                                content: Text('Invalid User or Password !!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
                               );
                             },
-                          ).then((value) => setState(() {}));
+                          );
                         }
 
                         setState(() {});
