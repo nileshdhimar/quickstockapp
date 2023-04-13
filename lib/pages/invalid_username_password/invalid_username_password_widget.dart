@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/switch_tenant/switch_tenant_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -174,26 +173,30 @@ class _InvalidUsernamePasswordWidgetState
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: Icon(
-                                    Icons.error_outline_outlined,
-                                    color: FlutterFlowTheme.of(context).error,
-                                    size: 36.0,
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 10.0, 0.0),
+                                    child: Icon(
+                                      Icons.error_outline_outlined,
+                                      color: FlutterFlowTheme.of(context).error,
+                                      size: 36.0,
+                                    ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
+                                      0.0, 0.0, 10.0, 0.0),
                                   child: Text(
-                                    'Your user name or password is incorrect.\nPlease try again.',
+                                    'Your user name or password \nis incorrect. Please try again.',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'DM Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          fontSize: 15.0,
                                         ),
                                   ),
                                 ),
@@ -215,20 +218,7 @@ class _InvalidUsernamePasswordWidgetState
                                       0.0, 0.0, 16.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.white,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (bottomSheetContext) {
-                                          return Padding(
-                                            padding: MediaQuery.of(
-                                                    bottomSheetContext)
-                                                .viewInsets,
-                                            child: SwitchTenantWidget(),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                      context.pushNamed('Login');
                                     },
                                     text: 'Ok',
                                     options: FFButtonOptions(

@@ -100,11 +100,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => DigitaSignatureWidget(),
         ),
         FFRoute(
-          name: 'StockOrderListingTAB',
-          path: '/stockOrderListingTAB',
-          builder: (context, params) => StockOrderListingTABWidget(),
-        ),
-        FFRoute(
           name: 'StockOrderListing-Detail-VerifyTAB',
           path: '/stockOrderListingDetailVerifyTAB',
           builder: (context, params) =>
