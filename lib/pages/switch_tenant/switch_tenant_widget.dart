@@ -52,6 +52,8 @@ class _SwitchTenantWidgetState extends State<SwitchTenantWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(0.0),
       child: BackdropFilter(
@@ -290,23 +292,16 @@ class _SwitchTenantWidgetState extends State<SwitchTenantWidget> {
                                           (_model.apiResulthjm?.jsonBody ?? ''),
                                         ).toString() !=
                                         'null') {
-                                      context.pushNamed(
-                                        'Login',
-                                        queryParams: {
-                                          'tenantName': serializeParam(
-                                            _model.tenentController.text,
-                                            ParamType.String,
-                                          ),
-                                          'tenantId': serializeParam(
-                                            getJsonField(
-                                              (_model.apiResulthjm?.jsonBody ??
-                                                  ''),
-                                              r'''$.result.tenantId''',
-                                            ),
-                                            ParamType.int,
-                                          ),
-                                        }.withoutNulls,
-                                      );
+                                      _model.updatePage(() {
+                                        FFAppState().TenantName =
+                                            _model.tenentController.text;
+                                        FFAppState().TenantId =
+                                            IsTenantAvailableCall.tenentId(
+                                          (_model.apiResulthjm?.jsonBody ?? ''),
+                                        );
+                                      });
+
+                                      context.pushNamed('Login');
                                     } else {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,

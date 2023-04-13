@@ -52,6 +52,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
@@ -164,7 +166,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            widget.tenantName,
+                                            FFAppState().TenantName,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -386,7 +388,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         _model.apiResult4rk = await AuthenticateCall.call(
                           userName: _model.textController1.text,
                           password: _model.textController2.text,
-                          tenantId: widget.tenantId,
+                          tenantId: FFAppState().TenantId,
                         );
                         if ((_model.apiResult4rk?.succeeded ?? true)) {
                           context.pushNamed('Dashboard');
