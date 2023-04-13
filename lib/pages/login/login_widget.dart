@@ -102,7 +102,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                         ),
                         Text(
-                          'Log inn',
+                          'Log in',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
