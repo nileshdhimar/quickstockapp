@@ -20,7 +20,7 @@ class IsTenantAvailableCall {
     return ApiManager.instance.makeApiCall(
       callName: 'IsTenantAvailable',
       apiUrl:
-          'https://othermintboat50.conveyor.cloud/api/services/app/Account/IsTenantAvailable',
+          'https://app.thesolarproduct/api/services/app/Account/IsTenantAvailable',
       callType: ApiCallType.POST,
       headers: {},
       params: {},

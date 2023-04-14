@@ -1,8 +1,6 @@
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -766,64 +764,20 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Icon(
-                                    Icons.location_pin,
+                                    Icons.calendar_today,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     size: 20.0,
                                   ),
-                                  FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                    options: [
-                                      'Adelaide',
-                                      'Brisane',
-                                      'Melbourne',
-                                      'Sydney',
-                                      'Perth',
-                                      'Darwin',
-                                      'Hobart',
-                                      'Adelaide',
-                                      'Australia'
-                                    ],
-                                    onChanged: (val) => setState(
-                                        () => _model.dropDownValue = val),
-                                    width: 110.0,
-                                    height: 35.0,
-                                    searchHintTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'DM Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                            ),
-                                    textStyle: FlutterFlowTheme.of(context)
+                                  Text(
+                                    dateTimeFormat(
+                                        'yMMMd', getCurrentTimestamp),
+                                    style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'DM Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w500,
+                                          lineHeight: 1.5,
                                         ),
-                                    hintText: 'Adelaide',
-                                    searchHintText: 'Search for an item...',
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down,
-                                      size: 15.0,
-                                    ),
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).appBar,
-                                    elevation: 0.0,
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 0.0,
-                                    borderRadius: 0.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 0.0, 5.0),
-                                    hidesUnderline: true,
-                                    isSearchable: false,
                                   ),
                                 ],
                               ),

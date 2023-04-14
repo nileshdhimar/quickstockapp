@@ -3,8 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/components/error_msg/error_msg_widget.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -302,20 +302,11 @@ class _SwitchTenantWidgetState extends State<SwitchTenantWidget> {
 
                                       context.pushNamed('Login');
                                     } else {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.white,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (bottomSheetContext) {
-                                          return Padding(
-                                            padding: MediaQuery.of(
-                                                    bottomSheetContext)
-                                                .viewInsets,
-                                            child: ErrorMsgWidget(),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                      await actions.errorDialog(
+                                        context,
+                                        'Opps !!',
+                                        'Tennant Name does not Exist !!',
+                                      );
                                     }
 
                                     setState(() {});
