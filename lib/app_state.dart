@@ -40,6 +40,12 @@ class FFAppState extends ChangeNotifier {
     _TenantId = _value;
     prefs.setInt('ff_TenantId', _value);
   }
+
+  String _Token = '';
+  String get Token => _Token;
+  set Token(String _value) {
+    _Token = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -3,7 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/switch_tenant/switch_tenant_widget.dart';
+import '/pages/components/switch_tenant/switch_tenant_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,7 +40,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     _model = createModel(context, () => LoginModel());
 
     _model.textController1 ??= TextEditingController();
-    _model.textController2 ??= TextEditingController(text: 'Password');
+    _model.textController2 ??= TextEditingController();
   }
 
   @override
@@ -281,12 +282,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 size: 24.0,
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'DM Sans',
-                                  lineHeight: 3.0,
-                                ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                             validator: _model.textController1Validator
                                 .asValidator(context),
                           ),
@@ -318,28 +314,28 @@ class _LoginWidgetState extends State<LoginWidget> {
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 0.0,
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 0.0,
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 0.0,
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 0.0,
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
@@ -367,12 +363,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'DM Sans',
-                                  lineHeight: 3.0,
-                                ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                             validator: _model.textController2Validator
                                 .asValidator(context),
                           ),
@@ -391,23 +382,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                           tenantId: FFAppState().TenantId,
                         );
                         if ((_model.apiResult4rk?.succeeded ?? true)) {
+                          setState(() {
+                            FFAppState().Token = AuthenticateCall.token(
+                              (_model.apiResult4rk?.jsonBody ?? ''),
+                            ).toString();
+                          });
+
                           context.pushNamed('Dashboard');
                         } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Error'),
-                                content: Text('Invalid User or Password !!'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
+                          await actions.infoDialog(
+                            context,
+                            'Login Failed!',
+                            'Invaild UserName Or ',
                           );
                         }
 

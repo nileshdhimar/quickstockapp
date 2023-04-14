@@ -30,7 +30,7 @@ class _SplashWidgetState extends State<SplashWidget>
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         RotateEffect(
-          curve: Curves.linear,
+          curve: Curves.bounceOut,
           delay: 0.ms,
           duration: 6500.ms,
           begin: 0.0,
@@ -96,7 +96,7 @@ class _SplashWidgetState extends State<SplashWidget>
                   children: [
                     Image.asset(
                       'assets/images/sales-drive-logo_4.png',
-                      width: 185.0,
+                      width: 120.0,
                       fit: BoxFit.cover,
                     ).animateOnPageLoad(
                         animationsMap['imageOnPageLoadAnimation']!),

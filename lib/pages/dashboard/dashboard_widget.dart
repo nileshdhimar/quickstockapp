@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -149,6 +150,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                     size: 16.0,
                                   ),
                                   onPressed: () async {
+                                    setState(() {
+                                      FFAppState().Token = '';
+                                    });
+
                                     context.pushNamed('Login');
                                   },
                                 ),
@@ -767,8 +772,9 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                     size: 20.0,
                                   ),
                                   FlutterFlowDropDown<String>(
-                                    controller: _model.dropDownController ??=
-                                        FormFieldController<String>(null),
+                                    controller:
+                                        _model.dropDownValueController ??=
+                                            FormFieldController<String>(null),
                                     options: [
                                       'Adelaide',
                                       'Brisane',
@@ -833,21 +839,12 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                           .secondaryText,
                                       size: 20.0,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        '08:00 AM',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'DM Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 25.0,
+                                      child: custom_widgets.RealTime(
+                                        width: 110.0,
+                                        height: 25.0,
                                       ),
                                     ),
                                   ],

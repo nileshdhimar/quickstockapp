@@ -155,6 +155,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'StockTransfer-Detail-Verified',
           path: '/stockTransferDetailVerified',
           builder: (context, params) => StockTransferDetailVerifiedWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-All',
+          path: '/ongoingJobsAll',
+          builder: (context, params) => OngoingJobsAllWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-ScannedJobs',
+          path: '/ongoingJobsScannedJobs',
+          builder: (context, params) => OngoingJobsScannedJobsWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-Scanned-DelByTrans',
+          path: '/ongoingJobsScannedDelByTrans',
+          builder: (context, params) => OngoingJobsScannedDelByTransWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-Scanned-PickupWarehouse',
+          path: '/ongoingJobsScannedPickupWarehouse',
+          builder: (context, params) =>
+              OngoingJobsScannedPickupWarehouseWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-Scanned-Detail',
+          path: '/ongoingJobsScannedDetail',
+          builder: (context, params) => OngoingJobsScannedDetailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

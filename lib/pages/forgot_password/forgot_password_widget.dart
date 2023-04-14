@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -266,6 +267,59 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             Expanded(
                               child: TextFormField(
                                 controller: _model.textController3,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.textController3',
+                                  Duration(milliseconds: 2000),
+                                  () async {
+                                    if (_model.textController2.text ==
+                                        _model.textController3.text) {
+                                      context.pushNamed(
+                                          'PasswordResetSuccessfully');
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content:
+                                                Text('Password Mismatch !!'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+                                  },
+                                ),
+                                onFieldSubmitted: (_) async {
+                                  if (_model.textController2.text ==
+                                      _model.textController3.text) {
+                                    context
+                                        .pushNamed('PasswordResetSuccessfully');
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Error'),
+                                          content: Text('Password Mismatch !!'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
+                                },
                                 autofocus: true,
                                 obscureText: !_model.passwordVisibility3,
                                 decoration: InputDecoration(
@@ -336,7 +390,27 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             20.0, 0.0, 20.0, 20.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed('PasswordResetSuccessfully');
+                            if (_model.textController2.text ==
+                                _model.textController3.text) {
+                              context.pushNamed('PasswordResetSuccessfully');
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Error'),
+                                    content: Text('Password Mismatch !!'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
                           },
                           text: 'Update Password',
                           options: FFButtonOptions(

@@ -20,7 +20,7 @@ class IsTenantAvailableCall {
     return ApiManager.instance.makeApiCall(
       callName: 'IsTenantAvailable',
       apiUrl:
-          'https://app.thesolarproduct.com/api/services/app/Account/IsTenantAvailable',
+          'https://othermintboat50.conveyor.cloud/api/services/app/Account/IsTenantAvailable',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -67,6 +67,11 @@ class AuthenticateCall {
       cache: false,
     );
   }
+
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.result.accessToken''',
+      );
 }
 
 class ApiPagingParams {
