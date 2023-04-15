@@ -1,3 +1,4 @@
+import '/components/stock_order_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,13 +14,18 @@ class StockOrderListingModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Model for StockOrderList component.
+  late StockOrderListModel stockOrderListModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    stockOrderListModel = createModel(context, () => StockOrderListModel());
+  }
 
   void dispose() {
     textController?.dispose();
+    stockOrderListModel.dispose();
   }
 
   /// Additional helper methods are added here.

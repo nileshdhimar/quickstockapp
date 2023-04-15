@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -45,6 +46,12 @@ class FFAppState extends ChangeNotifier {
   String get Token => _Token;
   set Token(String _value) {
     _Token = _value;
+  }
+
+  dynamic _UserInfo;
+  dynamic get UserInfo => _UserInfo;
+  set UserInfo(dynamic _value) {
+    _UserInfo = _value;
   }
 }
 

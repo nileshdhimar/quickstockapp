@@ -377,10 +377,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             ),
                                             Switch(
                                               value: _model.switchValue ??=
-                                                  true,
+                                                  false,
                                               onChanged: (newValue) async {
                                                 setState(() => _model
                                                     .switchValue = newValue!);
+                                                if (newValue!) {
+                                                  setDarkModeSetting(
+                                                      context, ThemeMode.dark);
+                                                } else {
+                                                  setDarkModeSetting(
+                                                      context, ThemeMode.light);
+                                                }
                                               },
                                             ),
                                           ],

@@ -13,16 +13,7 @@ import 'login_model.dart';
 export 'login_model.dart';
 
 class LoginWidget extends StatefulWidget {
-  const LoginWidget({
-    Key? key,
-    String? tenantName,
-    int? tenantId,
-  })  : this.tenantName = tenantName ?? 'Tenat',
-        this.tenantId = tenantId ?? 0,
-        super(key: key);
-
-  final String tenantName;
-  final int tenantId;
+  const LoginWidget({Key? key}) : super(key: key);
 
   @override
   _LoginWidgetState createState() => _LoginWidgetState();
@@ -302,6 +293,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             autofocus: true,
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
+                              hintText: 'Password',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
@@ -387,13 +379,32 @@ class _LoginWidgetState extends State<LoginWidget> {
                               (_model.apiResult4rk?.jsonBody ?? ''),
                             ).toString();
                           });
+                          _model.userInfoOutput = await GetUserInfoCall.call(
+                            userId: AuthenticateCall.userId(
+                              (_model.apiResult4rk?.jsonBody ?? ''),
+                            ),
+                            token: FFAppState().Token,
+                            tenantId: FFAppState().TenantId,
+                          );
+                          if ((_model.userInfoOutput?.succeeded ?? true)) {
+                            setState(() {
+                              FFAppState().Token = GetUserInfoCall.userInfo(
+                                (_model.userInfoOutput?.jsonBody ?? ''),
+                              ).toString();
+                              FFAppState().UserInfo = GetUserInfoCall.userInfo(
+                                (_model.userInfoOutput?.jsonBody ?? ''),
+                              );
+                            });
 
-                          context.pushNamed('Dashboard');
+                            context.pushNamed('Dashboard');
+                          } else {
+                            context.pushNamed('Login');
+                          }
                         } else {
-                          await actions.infoDialog(
+                          await actions.errorDialog(
                             context,
                             'Login Failed!',
-                            'Invaild UserName Or ',
+                            'Invalid Username Or Password',
                           );
                         }
 

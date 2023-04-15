@@ -44,10 +44,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Login',
           path: '/login',
-          builder: (context, params) => LoginWidget(
-            tenantName: params.getParam('tenantName', ParamType.String),
-            tenantId: params.getParam('tenantId', ParamType.int),
-          ),
+          builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
           name: 'ForgotPassword',

@@ -20,7 +20,7 @@ class IsTenantAvailableCall {
     return ApiManager.instance.makeApiCall(
       callName: 'IsTenantAvailable',
       apiUrl:
-          'https://app.thesolarproduct/api/services/app/Account/IsTenantAvailable',
+          'https://app.thesolarproduct.com/api/services/app/Account/IsTenantAvailable',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -71,6 +71,42 @@ class AuthenticateCall {
   static dynamic token(dynamic response) => getJsonField(
         response,
         r'''$.result.accessToken''',
+      );
+  static dynamic userId(dynamic response) => getJsonField(
+        response,
+        r'''$.result.userId''',
+      );
+}
+
+class GetUserInfoCall {
+  static Future<ApiCallResponse> call({
+    int? userId,
+    String? token = '',
+    int? tenantId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetUserInfo',
+      apiUrl:
+          'https://lostredleaf74.conveyor.cloud/api/services/app/UsersInfo/GetUserInfo',
+      callType: ApiCallType.GET,
+      headers: {
+        'X-XSRF-TOKEN': '${token}',
+        'accept': 'text/plain',
+      },
+      params: {
+        'UserId': userId,
+        'TenantId': tenantId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic userInfo(dynamic response) => getJsonField(
+        response,
+        r'''$.result''',
       );
 }
 
