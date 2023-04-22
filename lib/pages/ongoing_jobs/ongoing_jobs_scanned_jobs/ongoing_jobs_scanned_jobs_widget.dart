@@ -8,6 +8,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ongoing_jobs_scanned_jobs_model.dart';
@@ -257,6 +258,10 @@ class _OngoingJobsScannedJobsWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 5.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
@@ -283,6 +288,10 @@ class _OngoingJobsScannedJobsWidgetState
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
@@ -676,6 +685,10 @@ class _OngoingJobsScannedJobsWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 5.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
@@ -1100,6 +1113,10 @@ class _OngoingJobsScannedJobsWidgetState
                           color: Color(0x00EEEEEE),
                         ),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed('StockTransfer-StockIn');
                           },
@@ -1140,6 +1157,10 @@ class _OngoingJobsScannedJobsWidgetState
                           color: Color(0x00EEEEEE),
                         ),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed('StockTransfer-StockIn');
                           },

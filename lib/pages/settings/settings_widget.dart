@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/components/thumb_control/thumb_control_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -100,6 +101,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 15.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pushNamed('ForgotPassword');
                                 },
@@ -190,6 +195,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 15.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
@@ -254,7 +263,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Set Thumbnai Access',
+                                                    'BioMetric Access on/off',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleSmall
@@ -272,15 +281,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             ),
                                           ],
                                         ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.65, 0.0),
-                                          child: Icon(
-                                            Icons.keyboard_arrow_right,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
+                                        Switch(
+                                          value: _model.switchValue1 ??= false,
+                                          onChanged: (newValue) async {
+                                            setState(() => _model.switchValue1 =
+                                                newValue!);
+                                          },
                                         ),
                                       ],
                                     ),
@@ -376,11 +382,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               ],
                                             ),
                                             Switch(
-                                              value: _model.switchValue ??=
+                                              value: _model.switchValue2 ??=
                                                   false,
                                               onChanged: (newValue) async {
                                                 setState(() => _model
-                                                    .switchValue = newValue!);
+                                                    .switchValue2 = newValue!);
                                                 if (newValue!) {
                                                   setDarkModeSetting(
                                                       context, ThemeMode.dark);

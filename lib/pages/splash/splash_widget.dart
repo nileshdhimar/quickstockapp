@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'splash_model.dart';
@@ -71,6 +72,10 @@ class _SplashWidgetState extends State<SplashWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onTap: () async {
             context.pushNamed('Login');
           },
@@ -96,7 +101,7 @@ class _SplashWidgetState extends State<SplashWidget>
                   children: [
                     Image.asset(
                       'assets/images/sales-drive-logo_4.png',
-                      width: 120.0,
+                      width: 110.0,
                       fit: BoxFit.cover,
                     ).animateOnPageLoad(
                         animationsMap['imageOnPageLoadAnimation']!),

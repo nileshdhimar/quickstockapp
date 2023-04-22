@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/stock_order/confirm_order_item_popup/confirm_order_item_popup_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,7 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
               icon: Icon(
                 Icons.arrow_back,
                 color: FlutterFlowTheme.of(context).primaryText,
-                size: 30.0,
+                size: 26.0,
               ),
               onPressed: () async {
                 context.pushNamed('StockOrderListing');
@@ -447,7 +448,12 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'DM Sans',
+                                    fontSize: 14.0,
+                                  ),
                               validator: _model.textController1Validator
                                   .asValidator(context),
                             ),
@@ -489,7 +495,7 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
                                   icon: Icon(
                                     Icons.qr_code_outlined,
                                     color: FlutterFlowTheme.of(context)
-                                        .bottomMenuBar,
+                                        .primaryText,
                                     size: 26.0,
                                   ),
                                   onPressed: () {
@@ -575,7 +581,12 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'DM Sans',
+                                    fontSize: 14.0,
+                                  ),
                               validator: _model.textController2Validator
                                   .asValidator(context),
                             ),

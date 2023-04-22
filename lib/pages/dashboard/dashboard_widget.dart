@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           child: Drawer(
             elevation: 16.0,
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 20.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 35.0, 20.0, 20.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -118,6 +119,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                       ),
                                     ),
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed('ForgotPassword');
                                       },
@@ -191,6 +196,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pushNamed('StockOrder-Scan');
                                 },
@@ -247,6 +256,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pushNamed('StockTransfer-StockOut');
                                 },
@@ -557,34 +570,43 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
-                              child: Container(
-                                width: 310.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0x00FFFFFF),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 20.0, 0.0),
-                                      child: Image.asset(
-                                        'assets/images/1_8.png',
-                                        width: 35.0,
-                                        height: 35.0,
-                                        fit: BoxFit.cover,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('StockCheck');
+                                },
+                                child: Container(
+                                  width: 310.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x00FFFFFF),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 20.0, 0.0),
+                                        child: Image.asset(
+                                          'assets/images/1_8.png',
+                                          width: 35.0,
+                                          height: 35.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      'Stock Audit',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'DM Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ],
+                                      Text(
+                                        'Stock Audit',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'DM Sans',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -608,6 +630,112 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('Reports');
+                                },
+                                child: Container(
+                                  width: 310.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x00FFFFFF),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 20.0, 0.0),
+                                        child: Image.asset(
+                                          'assets/images/1_3.png',
+                                          width: 35.0,
+                                          height: 35.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Reports',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'DM Sans',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    if (false)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('InstListingForInstaller');
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Container(
+                                  width: 310.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x00FFFFFF),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 28.0, 0.0),
+                                        child: Image.asset(
+                                          'assets/images/suitcase.png',
+                                          width: 28.0,
+                                          height: 28.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Jobs',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'DM Sans',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    if (false)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
                               child: Container(
                                 width: 310.0,
                                 decoration: BoxDecoration(
@@ -618,16 +746,16 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 20.0, 0.0),
+                                          0.0, 0.0, 28.0, 0.0),
                                       child: Image.asset(
-                                        'assets/images/1_3.png',
-                                        width: 35.0,
-                                        height: 35.0,
+                                        'assets/images/calendar.png',
+                                        width: 28.0,
+                                        height: 28.0,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                     Text(
-                                      'Reports',
+                                      'Availability',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -652,6 +780,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
                             child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed('Settings');
                               },
@@ -665,11 +797,11 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 20.0, 0.0),
+                                          0.0, 0.0, 28.0, 0.0),
                                       child: Image.asset(
                                         'assets/images/1_10.png',
-                                        width: 35.0,
-                                        height: 35.0,
+                                        width: 28.0,
+                                        height: 28.0,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -690,50 +822,6 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         ],
                       ),
                     ),
-                    if (false)
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 10.0, 0.0, 10.0),
-                              child: Container(
-                                width: 310.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0x00FFFFFF),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 20.0, 0.0),
-                                      child: Image.asset(
-                                        'assets/images/1_11.png',
-                                        width: 35.0,
-                                        height: 35.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Change Location',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'DM Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                   ],
                 ),
               ),
@@ -844,26 +932,34 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.calendar_today,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 20.0,
-                                  ),
-                                  Text(
-                                    dateTimeFormat(
-                                        'yMMMd', getCurrentTimestamp),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'DM Sans',
-                                          lineHeight: 1.5,
-                                        ),
-                                  ),
-                                ],
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.calendar_today,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 22.0,
+                                      ),
+                                    ),
+                                    Text(
+                                      dateTimeFormat(
+                                          'yMMMd', getCurrentTimestamp),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'DM Sans',
+                                            lineHeight: 1.5,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -871,19 +967,23 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Icon(
-                                      Icons.timer_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 20.0,
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 8.0, 0.0),
+                                      child: Icon(
+                                        Icons.timer_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 22.0,
+                                      ),
                                     ),
                                     Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Container(
-                                        width: 110.0,
+                                        width: 80.0,
                                         height: 25.0,
                                         child: custom_widgets.RealTime(
-                                          width: 110.0,
+                                          width: 80.0,
                                           height: 25.0,
                                         ),
                                       ),

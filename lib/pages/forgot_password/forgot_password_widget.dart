@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'forgot_password_model.dart';
@@ -136,21 +137,22 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context)
+                                          .txtBoxBdr,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
@@ -210,21 +212,22 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context)
+                                          .txtBoxBdr,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
@@ -337,21 +340,22 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context)
+                                          .txtBoxBdr,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),

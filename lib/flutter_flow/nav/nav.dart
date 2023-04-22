@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -29,12 +30,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => SplashWidget(),
+      errorBuilder: (context, _) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: FlutterFlowTheme.of(context).primary,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/sales-drive-logo_4.png',
+                    height: 110.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            )
+          : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: FlutterFlowTheme.of(context).primary,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/sales-drive-logo_4.png',
+                        height: 110.0,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                )
+              : LoginWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -178,6 +205,126 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'OngoingJobs-Scanned-Detail',
           path: '/ongoingJobsScannedDetail',
           builder: (context, params) => OngoingJobsScannedDetailWidget(),
+        ),
+        FFRoute(
+          name: 'ChangItems',
+          path: '/changItems',
+          builder: (context, params) => ChangItemsWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-Others',
+          path: '/ongoingJobsOthers',
+          builder: (context, params) => OngoingJobsOthersWidget(),
+        ),
+        FFRoute(
+          name: 'OngoingJobs-SearchItems',
+          path: '/ongoingJobsSearchItems',
+          builder: (context, params) => OngoingJobsSearchItemsWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleOrders-All',
+          path: '/wholesaleOrdersAll',
+          builder: (context, params) => WholesaleOrdersAllWidget(),
+        ),
+        FFRoute(
+          name: 'Wholesale-All-Detail',
+          path: '/wholesaleAllDetail',
+          builder: (context, params) => WholesaleAllDetailWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleOrder-StockOut',
+          path: '/wholesaleOrderStockOut',
+          builder: (context, params) => WholesaleOrderStockOutWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleOrders-ScannedOrder',
+          path: '/wholesaleOrdersScannedOrder',
+          builder: (context, params) => WholesaleOrdersScannedOrderWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleItems-Detail-DDL',
+          path: '/wholesaleItemsDetailDDL',
+          builder: (context, params) => WholesaleItemsDetailDDLWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleItems-Scan',
+          path: '/wholesaleItemsScan',
+          builder: (context, params) => WholesaleItemsScanWidget(),
+        ),
+        FFRoute(
+          name: 'WholesaleOrders-Others',
+          path: '/wholesaleOrdersOthers',
+          builder: (context, params) => WholesaleOrdersOthersWidget(),
+        ),
+        FFRoute(
+          name: 'RevertItems',
+          path: '/revertItems',
+          builder: (context, params) => RevertItemsWidget(),
+        ),
+        FFRoute(
+          name: 'RevertItems-Scan',
+          path: '/revertItemsScan',
+          builder: (context, params) => RevertItemsScanWidget(),
+        ),
+        FFRoute(
+          name: 'SelectInstaller',
+          path: '/selectInstaller',
+          builder: (context, params) => SelectInstallerWidget(),
+        ),
+        FFRoute(
+          name: 'RevertItems-Selected',
+          path: '/revertItemsSelected',
+          builder: (context, params) => RevertItemsSelectedWidget(),
+        ),
+        FFRoute(
+          name: 'StockRevert',
+          path: '/stockRevert',
+          builder: (context, params) => StockRevertWidget(),
+        ),
+        FFRoute(
+          name: 'DefectedItems',
+          path: '/defectedItems',
+          builder: (context, params) => DefectedItemsWidget(),
+        ),
+        FFRoute(
+          name: 'DefectedItems-Action',
+          path: '/defectedItemsAction',
+          builder: (context, params) => DefectedItemsActionWidget(),
+        ),
+        FFRoute(
+          name: 'StockCheck',
+          path: '/stockCheck',
+          builder: (context, params) => StockCheckWidget(),
+        ),
+        FFRoute(
+          name: 'StockCheck-Detail',
+          path: '/stockCheckDetail',
+          builder: (context, params) => StockCheckDetailWidget(),
+        ),
+        FFRoute(
+          name: 'StockCheck-DetailScan',
+          path: '/stockCheckDetailScan',
+          builder: (context, params) => StockCheckDetailScanWidget(),
+        ),
+        FFRoute(
+          name: 'Dashboard-Installer',
+          path: '/dashboardInstaller',
+          builder: (context, params) => DashboardInstallerWidget(),
+        ),
+        FFRoute(
+          name: 'Reports',
+          path: '/reports',
+          builder: (context, params) => ReportsWidget(),
+        ),
+        FFRoute(
+          name: 'Reports-SerialNumber',
+          path: '/reportsSerialNumber',
+          builder: (context, params) => ReportsSerialNumberWidget(),
+        ),
+        FFRoute(
+          name: 'Reports-LiveStock',
+          path: '/reportsLiveStock',
+          builder: (context, params) => ReportsLiveStockWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

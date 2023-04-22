@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/switch_tenant/switch_tenant_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -76,13 +77,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
                     child: Image.asset(
                       'assets/images/Group_1.png',
-                      height: 80.0,
+                      height: 100.0,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 20.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -423,6 +424,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'DM Sans',
                                   color: Colors.black,
+                                  fontSize: 18.0,
                                 ),
                         elevation: 2.0,
                         borderSide: BorderSide(
@@ -437,6 +439,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('ForgotPassword');
                       },

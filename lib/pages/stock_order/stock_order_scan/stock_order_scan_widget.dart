@@ -7,6 +7,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'stock_order_scan_model.dart';
@@ -255,6 +256,10 @@ class _StockOrderScanWidgetState extends State<StockOrderScanWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 5.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed('StockOrderListing-Detail');
                         },
@@ -564,6 +569,10 @@ class _StockOrderScanWidgetState extends State<StockOrderScanWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 5.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed('StockOrderListing-Detail');
                         },
@@ -869,13 +878,6 @@ class _StockOrderScanWidgetState extends State<StockOrderScanWidget>
                         ),
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -936,6 +938,10 @@ class _StockOrderScanWidgetState extends State<StockOrderScanWidget>
                           color: Color(0x00EEEEEE),
                         ),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed('StockOrder-Verify');
                           },
@@ -976,6 +982,10 @@ class _StockOrderScanWidgetState extends State<StockOrderScanWidget>
                           color: Color(0x00EEEEEE),
                         ),
                         child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed('StockOrder-Others');
                           },

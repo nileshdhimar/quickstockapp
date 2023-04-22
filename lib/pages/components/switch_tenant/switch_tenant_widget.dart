@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'switch_tenant_model.dart';
@@ -206,7 +207,8 @@ class _SwitchTenantWidgetState extends State<SwitchTenantWidget> {
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0x00000000),
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtBoxBdr,
                                           width: 1.0,
                                         ),
                                         borderRadius:

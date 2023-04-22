@@ -51,3 +51,50 @@ export '/pages/ongoing_jobs/ongoing_jobs_scanned_pickup_warehouse/ongoing_jobs_s
     show OngoingJobsScannedPickupWarehouseWidget;
 export '/pages/ongoing_jobs/ongoing_jobs_scanned_detail/ongoing_jobs_scanned_detail_widget.dart'
     show OngoingJobsScannedDetailWidget;
+export '/pages/ongoing_jobs/chang_items/chang_items_widget.dart'
+    show ChangItemsWidget;
+export '/pages/ongoing_jobs/ongoing_jobs_others/ongoing_jobs_others_widget.dart'
+    show OngoingJobsOthersWidget;
+export '/pages/ongoing_jobs_search_items/ongoing_jobs_search_items_widget.dart'
+    show OngoingJobsSearchItemsWidget;
+export '/pages/wholesale_orders/wholesale_orders_all/wholesale_orders_all_widget.dart'
+    show WholesaleOrdersAllWidget;
+export '/pages/wholesale_orders/wholesale_all_detail/wholesale_all_detail_widget.dart'
+    show WholesaleAllDetailWidget;
+export '/pages/wholesale_orders/wholesale_order_stock_out/wholesale_order_stock_out_widget.dart'
+    show WholesaleOrderStockOutWidget;
+export '/pages/wholesale_orders/wholesale_orders_scanned_order/wholesale_orders_scanned_order_widget.dart'
+    show WholesaleOrdersScannedOrderWidget;
+export '/pages/wholesale_orders/wholesale_items_detail_d_d_l/wholesale_items_detail_d_d_l_widget.dart'
+    show WholesaleItemsDetailDDLWidget;
+export '/pages/wholesale_orders/wholesale_items_scan/wholesale_items_scan_widget.dart'
+    show WholesaleItemsScanWidget;
+export '/pages/wholesale_orders/wholesale_orders_others/wholesale_orders_others_widget.dart'
+    show WholesaleOrdersOthersWidget;
+export '/pages/rever_items/revert_items/revert_items_widget.dart'
+    show RevertItemsWidget;
+export '/pages/rever_items/revert_items_scan/revert_items_scan_widget.dart'
+    show RevertItemsScanWidget;
+export '/pages/rever_items/select_installer/select_installer_widget.dart'
+    show SelectInstallerWidget;
+export '/pages/rever_items/revert_items_selected/revert_items_selected_widget.dart'
+    show RevertItemsSelectedWidget;
+export '/pages/rever_items/stock_revert/stock_revert_widget.dart'
+    show StockRevertWidget;
+export '/pages/defecte_items/defected_items/defected_items_widget.dart'
+    show DefectedItemsWidget;
+export '/pages/defecte_items/defected_items_action/defected_items_action_widget.dart'
+    show DefectedItemsActionWidget;
+export '/pages/stock_check/stock_check/stock_check_widget.dart'
+    show StockCheckWidget;
+export '/pages/stock_check/stock_check_detail/stock_check_detail_widget.dart'
+    show StockCheckDetailWidget;
+export '/pages/stock_check/stock_check_detail_scan/stock_check_detail_scan_widget.dart'
+    show StockCheckDetailScanWidget;
+export '/pages/dashboard_installer/dashboard_installer_widget.dart'
+    show DashboardInstallerWidget;
+export '/pages/reports/reports/reports_widget.dart' show ReportsWidget;
+export '/pages/reports/reports_serial_number/reports_serial_number_widget.dart'
+    show ReportsSerialNumberWidget;
+export '/pages/reports/reports_live_stock/reports_live_stock_widget.dart'
+    show ReportsLiveStockWidget;

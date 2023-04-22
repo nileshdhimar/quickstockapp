@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -38,11 +39,16 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
+  bool displaySplashImage = true;
+
   @override
   void initState() {
     super.initState();
     _appStateNotifier = AppStateNotifier();
     _router = createRouter(_appStateNotifier);
+
+    Future.delayed(Duration(seconds: 1),
+        () => setState(() => _appStateNotifier.stopShowingSplashImage()));
   }
 
   void setLocale(String language) {

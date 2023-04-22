@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/stock_order/confirm_order_item_popup/confirm_order_item_popup_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ongoing_jobs_scanned_del_by_trans_model.dart';
@@ -522,7 +523,12 @@ class _OngoingJobsScannedDelByTransWidgetState
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'DM Sans',
+                                    fontSize: 14.0,
+                                  ),
                               validator: _model.textControllerValidator
                                   .asValidator(context),
                             ),
@@ -543,7 +549,7 @@ class _OngoingJobsScannedDelByTransWidgetState
                                   icon: Icon(
                                     Icons.qr_code_outlined,
                                     color: FlutterFlowTheme.of(context)
-                                        .bottomMenuBar,
+                                        .primaryText,
                                     size: 26.0,
                                   ),
                                   onPressed: () {

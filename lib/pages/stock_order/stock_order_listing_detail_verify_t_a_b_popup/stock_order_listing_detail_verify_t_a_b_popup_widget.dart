@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/components/verify_method_popup/verify_method_popup_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'stock_order_listing_detail_verify_t_a_b_popup_model.dart';
@@ -507,6 +508,10 @@ class _StockOrderListingDetailVerifyTABPopupWidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
