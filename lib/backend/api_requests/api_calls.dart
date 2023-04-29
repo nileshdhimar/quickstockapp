@@ -87,7 +87,7 @@ class GetUserInfoCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetUserInfo',
       apiUrl:
-          'https://app.thesolarproduct.com/api/services/app/UsersInfo/GetUserInfo',
+          'https://foundmintbox18.conveyor.cloud/api/services/app/UsersInfo/GetUserInfo',
       callType: ApiCallType.GET,
       headers: {
         'X-XSRF-TOKEN': '${token}',

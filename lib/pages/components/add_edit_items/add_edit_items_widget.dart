@@ -193,7 +193,9 @@ class _AddEditItemsWidgetState extends State<AddEditItemsWidget> {
                                       FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: '',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                           ),
@@ -236,7 +238,9 @@ class _AddEditItemsWidgetState extends State<AddEditItemsWidget> {
                                       FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: '',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLargeFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                           ),

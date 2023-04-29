@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/components/installer_filter_options/installer_filter_options_widget.dart';
 import '/pages/components/installer_list_for_installer/installer_list_for_installer_widget.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,8 +28,6 @@ class _InstListingForInstallerWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => InstListingForInstallerModel());
-
-    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -118,130 +114,52 @@ class _InstListingForInstallerWidgetState
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: Container(
-                                width: double.infinity,
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textController',
-                                    Duration(milliseconds: 2000),
-                                    () => setState(() {}),
-                                  ),
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Job Number/ Customre Name ',
-                                    hintStyle:
-                                        FlutterFlowTheme.of(context).bodySmall,
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .loginTxtBox,
-                                    suffixIcon: _model
-                                            .textController!.text.isNotEmpty
-                                        ? InkWell(
-                                            onTap: () async {
-                                              _model.textController?.clear();
-                                              setState(() {});
-                                            },
-                                            child: Icon(
-                                              Icons.clear,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 16.0,
-                                            ),
-                                          )
-                                        : null,
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 8.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            fillColor: FlutterFlowTheme.of(context).loginTxtBox,
+                            hoverColor: FlutterFlowTheme.of(context).textbox,
+                            hoverIconColor:
+                                FlutterFlowTheme.of(context).primaryBtnText,
+                            icon: Icon(
+                              Icons.chevron_left,
+                              color: Color(0xFFB9B6E2),
+                              size: 24.0,
                             ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 8.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 46.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .loginTxtBox,
-                                    hoverColor:
-                                        FlutterFlowTheme.of(context).textbox,
-                                    hoverIconColor: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    icon: Icon(
-                                      Icons.tune,
-                                      color: Color(0xFFB9B6E2),
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (bottomSheetContext) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .requestFocus(_unfocusNode),
-                                            child: Padding(
-                                              padding: MediaQuery.of(
-                                                      bottomSheetContext)
-                                                  .viewInsets,
-                                              child:
-                                                  InstallerFilterOptionsWidget(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
+                          Text(
+                            dateTimeFormat('d/M/y', getCurrentTimestamp),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'DM Sans',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 8.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            fillColor: FlutterFlowTheme.of(context).loginTxtBox,
+                            hoverColor: FlutterFlowTheme.of(context).textbox,
+                            hoverIconColor:
+                                FlutterFlowTheme.of(context).primaryBtnText,
+                            icon: Icon(
+                              Icons.chevron_right_sharp,
+                              color: Color(0xFFB9B6E2),
+                              size: 24.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
                           ),
                         ],
                       ),
