@@ -9,8 +9,6 @@ export '/pages/dashboard/dashboard_widget.dart' show DashboardWidget;
 export '/pages/settings/settings_widget.dart' show SettingsWidget;
 export '/pages/stock_order/stock_order_listing/stock_order_listing_widget.dart'
     show StockOrderListingWidget;
-export '/pages/inst_listing_for_installer/inst_listing_for_installer_widget.dart'
-    show InstListingForInstallerWidget;
 export '/pages/stock_order/stock_order_listing_detail/stock_order_listing_detail_widget.dart'
     show StockOrderListingDetailWidget;
 export '/pages/stock_order/order_item_detail/order_item_detail_widget.dart'
@@ -39,7 +37,7 @@ export '/pages/stock_transfer/stock_transfer_out_scan/stock_transfer_out_scan_wi
     show StockTransferOutScanWidget;
 export '/pages/stock_transfer/stock_transfer_stock_in/stock_transfer_stock_in_widget.dart'
     show StockTransferStockInWidget;
-export '/pages/stock_transfer/stock_transfer_detail_verified/stock_transfer_detail_verified_widget.dart'
+export '/pages/stock_transfer_detail_verified/stock_transfer_detail_verified_widget.dart'
     show StockTransferDetailVerifiedWidget;
 export '/pages/ongoing_jobs/ongoing_jobs_all/ongoing_jobs_all_widget.dart'
     show OngoingJobsAllWidget;
@@ -98,3 +96,7 @@ export '/pages/reports/reports_serial_number/reports_serial_number_widget.dart'
     show ReportsSerialNumberWidget;
 export '/pages/reports/reports_live_stock/reports_live_stock_widget.dart'
     show ReportsLiveStockWidget;
+export '/pages/inst_listing_for_installer/inst_listing_for_installer_widget.dart'
+    show InstListingForInstallerWidget;
+export '/pages/inst_listing_for_installer_copy/inst_listing_for_installer_copy_widget.dart'
+    show InstListingForInstallerCopyWidget;

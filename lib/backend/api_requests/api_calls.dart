@@ -87,7 +87,7 @@ class GetUserInfoCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetUserInfo',
       apiUrl:
-          'https://foundmintbox18.conveyor.cloud/api/services/app/UsersInfo/GetUserInfo',
+          'https://app.thesolarproduct.com/api/services/app/UsersInfo/GetUserInfo',
       callType: ApiCallType.GET,
       headers: {
         'X-XSRF-TOKEN': '${token}',
@@ -107,6 +107,66 @@ class GetUserInfoCall {
   static dynamic userInfo(dynamic response) => getJsonField(
         response,
         r'''$.result''',
+      );
+}
+
+class GetInstallationCall {
+  static Future<ApiCallResponse> call({
+    int? userId,
+    String? token = '',
+    int? tenantId,
+    String? installationDate = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetInstallation',
+      apiUrl:
+          'http://app.thesolarproduct.com/api/services/app/Installer/GetInstallation',
+      callType: ApiCallType.GET,
+      headers: {
+        'X-XSRF-TOKEN': '${token}',
+        'accept': 'text/plain',
+      },
+      params: {
+        'UserId': userId,
+        'TenantId': tenantId,
+        'InstallationDate': installationDate,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic installationList(dynamic response) => getJsonField(
+        response,
+        r'''$.result''',
+        true,
+      );
+  static dynamic jobNumber(dynamic response) => getJsonField(
+        response,
+        r'''$.result[:].jobNumber''',
+        true,
+      );
+  static dynamic customerName(dynamic response) => getJsonField(
+        response,
+        r'''$.result[:].customerName''',
+        true,
+      );
+  static dynamic installationTime(dynamic response) => getJsonField(
+        response,
+        r'''$.result[:].installationTime''',
+        true,
+      );
+  static dynamic address(dynamic response) => getJsonField(
+        response,
+        r'''$.result[:].address''',
+        true,
+      );
+  static dynamic address2(dynamic response) => getJsonField(
+        response,
+        r'''$.result[:].address2''',
+        true,
       );
 }
 

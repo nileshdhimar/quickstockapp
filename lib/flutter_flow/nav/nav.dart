@@ -43,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : LoginWidget(),
+          : SplashWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -61,7 +61,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : LoginWidget(),
+              : SplashWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -97,11 +97,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'StockOrderListing',
           path: '/stockOrderListing',
           builder: (context, params) => StockOrderListingWidget(),
-        ),
-        FFRoute(
-          name: 'InstListingForInstaller',
-          path: '/instListingForInstaller',
-          builder: (context, params) => InstListingForInstallerWidget(),
         ),
         FFRoute(
           name: 'StockOrderListing-Detail',
@@ -325,6 +320,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Reports-LiveStock',
           path: '/reportsLiveStock',
           builder: (context, params) => ReportsLiveStockWidget(),
+        ),
+        FFRoute(
+          name: 'InstListingForInstaller',
+          path: '/instListingForInstaller',
+          builder: (context, params) => InstListingForInstallerWidget(),
+        ),
+        FFRoute(
+          name: 'InstListingForInstallerCopy',
+          path: '/instListingForInstallerCopy',
+          builder: (context, params) => InstListingForInstallerCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

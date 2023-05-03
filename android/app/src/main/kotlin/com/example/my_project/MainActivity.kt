@@ -1,4 +1,4 @@
-package com.mycompany.quickstock
+package com.flutterflow.thesolarproduct
 
 import io.flutter.embedding.android.FlutterActivity
 

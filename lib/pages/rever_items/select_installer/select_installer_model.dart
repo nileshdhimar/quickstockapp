@@ -1,4 +1,3 @@
-import '/components/select_installer_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,19 +14,13 @@ class SelectInstallerModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Model for SelectInstaller-List component.
-  late SelectInstallerListModel selectInstallerListModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    selectInstallerListModel =
-        createModel(context, () => SelectInstallerListModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     textController?.dispose();
-    selectInstallerListModel.dispose();
   }
 
   /// Additional helper methods are added here.

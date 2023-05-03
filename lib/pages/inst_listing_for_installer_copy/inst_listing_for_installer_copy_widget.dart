@@ -7,20 +7,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'inst_listing_for_installer_model.dart';
-export 'inst_listing_for_installer_model.dart';
+import 'inst_listing_for_installer_copy_model.dart';
+export 'inst_listing_for_installer_copy_model.dart';
 
-class InstListingForInstallerWidget extends StatefulWidget {
-  const InstListingForInstallerWidget({Key? key}) : super(key: key);
+class InstListingForInstallerCopyWidget extends StatefulWidget {
+  const InstListingForInstallerCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _InstListingForInstallerWidgetState createState() =>
-      _InstListingForInstallerWidgetState();
+  _InstListingForInstallerCopyWidgetState createState() =>
+      _InstListingForInstallerCopyWidgetState();
 }
 
-class _InstListingForInstallerWidgetState
-    extends State<InstListingForInstallerWidget> {
-  late InstListingForInstallerModel _model;
+class _InstListingForInstallerCopyWidgetState
+    extends State<InstListingForInstallerCopyWidget> {
+  late InstListingForInstallerCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -28,7 +28,7 @@ class _InstListingForInstallerWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => InstListingForInstallerModel());
+    _model = createModel(context, () => InstListingForInstallerCopyModel());
   }
 
   @override
@@ -156,7 +156,7 @@ class _InstListingForInstallerWidgetState
                                       }
                                     },
                                     child: Text(
-                                      dateTimeFormat('yMd', _model.datePicked),
+                                      'Today\'s Date',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -213,7 +213,16 @@ class _InstListingForInstallerWidgetState
                         padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: GetInstallationCall.call(),
+                          future: GetInstallationCall.call(
+                            token: FFAppState().Token,
+                            tenantId: FFAppState().TenantId,
+                            userId: getJsonField(
+                              FFAppState().UserInfo,
+                              r'''$.id''',
+                            ),
+                            installationDate:
+                                dateTimeFormat('yMd', _model.datePicked),
+                          ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {

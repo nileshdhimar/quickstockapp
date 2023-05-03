@@ -89,11 +89,8 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Image.network(
-                                          getJsonField(
-                                            FFAppState().UserInfo,
-                                            r'''$.profilePicture''',
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/icon_1_(1).png',
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -687,20 +684,20 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('InstListingForInstaller');
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('InstListingForInstaller');
+                                },
                                 child: Container(
                                   width: 310.0,
                                   decoration: BoxDecoration(
@@ -732,8 +729,8 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     if (functions.checkPermission(
@@ -1059,7 +1056,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                         ),
                                       ),
                                       Text(
-                                        'PANELS',
+                                        'PANEL',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
