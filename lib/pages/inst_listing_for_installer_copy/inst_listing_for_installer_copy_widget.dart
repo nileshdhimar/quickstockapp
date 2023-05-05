@@ -2,7 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:flutter/foundation.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,7 +64,7 @@ class _InstListingForInstallerCopyWidgetState
                 size: 26.0,
               ),
               onPressed: () async {
-                context.pushNamed('Dashboard');
+                context.pushNamed('Dashboard-Installer');
               },
             ),
           ),
@@ -99,96 +99,25 @@ class _InstListingForInstallerCopyWidgetState
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 10.0, 20.0, 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 8.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .loginTxtBox,
-                                    hoverColor:
-                                        FlutterFlowTheme.of(context).textbox,
-                                    hoverIconColor: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    icon: Icon(
-                                      Icons.chevron_left,
-                                      color: Color(0xFFB9B6E2),
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      final _datePickedDate =
-                                          await showDatePicker(
-                                        context: context,
-                                        initialDate: getCurrentTimestamp,
-                                        firstDate: DateTime(1900),
-                                        lastDate: DateTime(2050),
-                                      );
-
-                                      if (_datePickedDate != null) {
-                                        setState(() {
-                                          _model.datePicked = DateTime(
-                                            _datePickedDate.year,
-                                            _datePickedDate.month,
-                                            _datePickedDate.day,
-                                          );
-                                        });
-                                      }
-                                    },
-                                    child: Text(
-                                      'Today\'s Date',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'DM Sans',
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ),
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 8.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .loginTxtBox,
-                                    hoverColor:
-                                        FlutterFlowTheme.of(context).textbox,
-                                    hoverIconColor: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    icon: Icon(
-                                      Icons.chevron_right_sharp,
-                                      color: Color(0xFFB9B6E2),
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
-                                  ),
-                                ],
-                              ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {});
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 1.0,
+                            height: 40.0,
+                            child: custom_widgets.DateSelector(
+                              width: MediaQuery.of(context).size.width * 1.0,
+                              height: 40.0,
+                              refreshpageURL: () async {
+                                setState(() {});
+                              },
                             ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -201,60 +130,59 @@ class _InstListingForInstallerCopyWidgetState
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    _model.apiResultwo1 = await GetInstallationCall.call();
-                  },
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 0.0, 15.0, 0.0),
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: GetInstallationCall.call(
-                            token: FFAppState().Token,
-                            tenantId: FFAppState().TenantId,
-                            userId: getJsonField(
-                              FFAppState().UserInfo,
-                              r'''$.id''',
-                            ),
-                            installationDate:
-                                dateTimeFormat('yMd', _model.datePicked),
+                child: FutureBuilder<ApiCallResponse>(
+                  future: GetInstallationCall.call(
+                    token: FFAppState().Token,
+                    tenantId: FFAppState().TenantId,
+                    userId: getJsonField(
+                      FFAppState().UserInfo,
+                      r'''$.id''',
+                    ),
+                    installationDate: valueOrDefault<String>(
+                      dateTimeFormat('yMd', FFAppState().customDate),
+                      'DateTime',
+                    ),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitDoubleBounce(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 50.0,
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitDoubleBounce(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            final columnGetInstallationResponse =
-                                snapshot.data!;
-                            return Builder(
-                              builder: (context) {
-                                final installerJobList =
-                                    GetInstallationCall.installationList(
-                                          columnGetInstallationResponse
-                                              .jsonBody,
-                                        )?.toList() ??
-                                        [];
-                                return Column(
+                        ),
+                      );
+                    }
+                    final listViewGetInstallationResponse = snapshot.data!;
+                    return Builder(
+                      builder: (context) {
+                        final installerJobList =
+                            GetInstallationCall.installationList(
+                                  listViewGetInstallationResponse.jsonBody,
+                                )?.toList() ??
+                                [];
+                        return RefreshIndicator(
+                          onRefresh: () async {
+                            setState(() {});
+                          },
+                          child: ListView.builder(
+                            padding: EdgeInsets.zero,
+                            scrollDirection: Axis.vertical,
+                            itemCount: installerJobList.length,
+                            itemBuilder: (context, installerJobListIndex) {
+                              final installerJobListItem =
+                                  installerJobList[installerJobListIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  children:
-                                      List.generate(installerJobList.length,
-                                          (installerJobListIndex) {
-                                    final installerJobListItem =
-                                        installerJobList[installerJobListIndex];
-                                    return Padding(
+                                  children: [
+                                    Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 10.0),
                                       child: Container(
@@ -438,10 +366,14 @@ class _InstListingForInstallerCopyWidgetState
                                                                           .max,
                                                                   children: [
                                                                     Text(
-                                                                      getJsonField(
-                                                                        installerJobListItem,
-                                                                        r'''$.customerName''',
-                                                                      ).toString(),
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        getJsonField(
+                                                                          installerJobListItem,
+                                                                          r'''$.customerName''',
+                                                                        ).toString(),
+                                                                        'Solar',
+                                                                      ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -449,7 +381,7 @@ class _InstListingForInstallerCopyWidgetState
                                                                             fontFamily:
                                                                                 'DM Sans',
                                                                             fontSize:
-                                                                                14.0,
+                                                                                16.0,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -470,13 +402,17 @@ class _InstListingForInstallerCopyWidgetState
                                                                         .max,
                                                                 children: [
                                                                   Text(
-                                                                    '${getJsonField(
-                                                                      installerJobListItem,
-                                                                      r'''$.address''',
-                                                                    ).toString()},${getJsonField(
-                                                                      installerJobListItem,
-                                                                      r'''$.address2''',
-                                                                    ).toString()}',
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      '${getJsonField(
+                                                                        installerJobListItem,
+                                                                        r'''$.address''',
+                                                                      ).toString()}, ${getJsonField(
+                                                                        installerJobListItem,
+                                                                        r'''$.address2''',
+                                                                      ).toString()}',
+                                                                      'No Adress',
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -501,16 +437,16 @@ class _InstListingForInstallerCopyWidgetState
                                           ],
                                         ),
                                       ),
-                                    );
-                                  }),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ],

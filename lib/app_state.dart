@@ -11,9 +11,7 @@ class FFAppState extends ChangeNotifier {
     return _instance;
   }
 
-  FFAppState._internal() {
-    initializePersistedState();
-  }
+  FFAppState._internal();
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
@@ -52,6 +50,12 @@ class FFAppState extends ChangeNotifier {
   dynamic get UserInfo => _UserInfo;
   set UserInfo(dynamic _value) {
     _UserInfo = _value;
+  }
+
+  DateTime? _customDate = DateTime.fromMillisecondsSinceEpoch(1683248220000);
+  DateTime? get customDate => _customDate;
+  set customDate(DateTime? _value) {
+    _customDate = _value;
   }
 }
 
