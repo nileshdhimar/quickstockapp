@@ -98,24 +98,30 @@ class _InstListingForInstallerCopyWidgetState
                   children: [
                     Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            setState(() {});
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 1.0,
-                            height: 40.0,
-                            child: custom_widgets.DateSelector(
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 10.0, 20.0, 10.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {});
+                            },
+                            child: Container(
                               width: MediaQuery.of(context).size.width * 1.0,
                               height: 40.0,
-                              refreshpageURL: () async {
-                                setState(() {});
-                              },
+                              child: custom_widgets.DateSelector(
+                                width: MediaQuery.of(context).size.width * 1.0,
+                                height: 40.0,
+                                refreshpageURL: () async {
+                                  setState(() {});
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -294,10 +300,14 @@ class _InstListingForInstallerCopyWidgetState
                                                             ),
                                                           ),
                                                           Text(
-                                                            getJsonField(
-                                                              installerJobListItem,
-                                                              r'''$.installationTime''',
-                                                            ).toString(),
+                                                            valueOrDefault<
+                                                                String>(
+                                                              getJsonField(
+                                                                installerJobListItem,
+                                                                r'''$.installationTime''',
+                                                              ).toString(),
+                                                              'AM',
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium

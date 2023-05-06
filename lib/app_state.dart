@@ -52,7 +52,7 @@ class FFAppState extends ChangeNotifier {
     _UserInfo = _value;
   }
 
-  DateTime? _customDate = DateTime.fromMillisecondsSinceEpoch(1683248220000);
+  DateTime? _customDate = DateTime.fromMillisecondsSinceEpoch(1683273540000);
   DateTime? get customDate => _customDate;
   set customDate(DateTime? _value) {
     _customDate = _value;

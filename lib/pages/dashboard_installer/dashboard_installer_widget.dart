@@ -696,7 +696,8 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('InstListingForInstaller');
+                                  context
+                                      .pushNamed('InstListingForInstallerCopy');
                                 },
                                 child: Container(
                                   width: 310.0,
@@ -756,8 +757,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context
-                                      .pushNamed('InstListingForInstallerCopy');
+                                  context.pushNamed('InstListingForInstaller');
                                 },
                                 child: Container(
                                   width: 310.0,

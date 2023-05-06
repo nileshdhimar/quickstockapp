@@ -35,7 +35,8 @@ class _DateSelectorState extends State<DateSelector> {
   void initState() {
     super.initState();
     appState = FFAppState();
-    currentDate = appState.customDate ?? DateTime.now();
+    //currentDate = appState.customDate ?? DateTime.now();
+    currentDate = DateTime.now();
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -73,33 +74,51 @@ class _DateSelectorState extends State<DateSelector> {
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat('yMMMd');
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: IconButton(
-            onPressed: _decrementDate,
-            icon: Icon(Icons.arrow_left),
-            color: Colors.white,
-            iconSize: 40,
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          onHover: (PointerEvent event) {
+            setState(() {
+              // Change the color of the icon when hovered over
+              // Example: color: Colors.red,
+            });
+          },
+          onExit: (PointerEvent event) {
+            setState(() {
+              // Change the color of the icon when the cursor is not hovering over it
+              // Example: color: Color(0xFFB9B6E2),
+            });
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: IconButton(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+              onPressed: _decrementDate,
+              icon: Icon(Icons.chevron_left_sharp),
+              color: Color(0xFFB9B6E2),
+              iconSize: 24,
+            ),
           ),
         ),
-        SizedBox(width: 16),
+        SizedBox(width: 10),
         GestureDetector(
           onTap: () {
             _selectDate(context);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: FlutterFlowTheme.of(context).primaryColor,
-              ),
-              borderRadius: BorderRadius.circular(4),
-            ),
+            //padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            // decoration: BoxDecoration(
+            //  border: Border.all(
+            //    color: FlutterFlowTheme.of(context).primaryColor,
+            //  ),
+            //  borderRadius: BorderRadius.circular(4),
+            //),
             child: Text(
               formatter.format(currentDate),
               style: TextStyle(
@@ -109,17 +128,33 @@ class _DateSelectorState extends State<DateSelector> {
             ),
           ),
         ),
-        SizedBox(width: 16),
-        Container(
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: IconButton(
-            onPressed: _incrementDate,
-            icon: Icon(Icons.arrow_right),
-            color: Colors.white,
-            iconSize: 40,
+        SizedBox(width: 10),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          onHover: (PointerEvent event) {
+            setState(() {
+              // Change the color of the icon when hovered over
+              // Example: color: Colors.red,
+            });
+          },
+          onExit: (PointerEvent event) {
+            setState(() {
+              // Change the color of the icon when the cursor is not hovering over it
+              // Example: color: Color(0xFFB9B6E2),
+            });
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: IconButton(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+              onPressed: _incrementDate,
+              icon: Icon(Icons.chevron_right_sharp),
+              color: Color(0xFFB9B6E2),
+              iconSize: 24,
+            ),
           ),
         ),
       ],
