@@ -55,9 +55,9 @@ class _InstListingForInstallerCopyWidgetState
             padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderColor: Colors.transparent,
-              borderRadius: 30.0,
+              borderRadius: 8.0,
               borderWidth: 1.0,
-              buttonSize: 60.0,
+              buttonSize: 40.0,
               icon: Icon(
                 Icons.arrow_back,
                 color: FlutterFlowTheme.of(context).primaryText,

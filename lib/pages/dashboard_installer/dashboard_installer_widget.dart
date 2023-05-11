@@ -846,6 +846,66 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                         ],
                       ),
                     ),
+                    if (functions.checkPermission(
+                        (getJsonField(
+                          FFAppState().UserInfo,
+                          r'''$.grantedPermissions''',
+                        ) as List)
+                            .map<String>((s) => s.toString())
+                            .toList()!,
+                        'QuickStockApp.Availability'))
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('ServiceList-DetailTab');
+                                },
+                                child: Container(
+                                  width: 310.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x00FFFFFF),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 28.0, 0.0),
+                                        child: Image.asset(
+                                          'assets/images/1_3.png',
+                                          width: 28.0,
+                                          height: 28.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Services',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'DM Sans',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -939,7 +999,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                 Text(
                                   getJsonField(
                                     FFAppState().UserInfo,
-                                    r'''$.fullName''',
+                                    r'''$.name''',
                                   ).toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

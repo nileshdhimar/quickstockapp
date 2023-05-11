@@ -100,3 +100,10 @@ export '/pages/inst_listing_for_installer/inst_listing_for_installer_widget.dart
     show InstListingForInstallerWidget;
 export '/pages/inst_listing_for_installer_copy/inst_listing_for_installer_copy_widget.dart'
     show InstListingForInstallerCopyWidget;
+export '/pages/service_list/service_list_widget.dart' show ServiceListWidget;
+export '/pages/service_list_photo_tab/service_list_photo_tab_widget.dart'
+    show ServiceListPhotoTabWidget;
+export '/pages/service_list_scan_tab/service_list_scan_tab_widget.dart'
+    show ServiceListScanTabWidget;
+export '/pages/service_list_detail_tab/service_list_detail_tab_widget.dart'
+    show ServiceListDetailTabWidget;

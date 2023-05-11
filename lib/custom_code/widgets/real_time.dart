@@ -34,7 +34,7 @@ class _RealTimeState extends State<RealTime> {
     return QudsDigitalClockViewer(
         showSeconds: true,
         showTimePeriod: false,
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: FlutterFlowTheme.of(context).primaryText),
         backgroundColor: Color.fromRGBO(232, 241, 255, 0));
   }
 }

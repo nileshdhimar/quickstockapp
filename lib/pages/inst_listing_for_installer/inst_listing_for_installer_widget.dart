@@ -1,8 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -189,24 +191,69 @@ class _InstListingForInstallerWidgetState
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                    child: FlutterFlowCalendar(
-                      color: FlutterFlowTheme.of(context).primary,
-                      iconColor: FlutterFlowTheme.of(context).primary,
-                      weekFormat: false,
-                      weekStartsMonday: true,
-                      onChange: (DateTimeRange? newSelectedDate) {
-                        setState(
-                            () => _model.calendarSelectedDay = newSelectedDate);
-                      },
-                      titleStyle: FlutterFlowTheme.of(context).titleMedium,
-                      dayOfWeekStyle: TextStyle(
-                        color: FlutterFlowTheme.of(context).primary,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).accent3,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      dateStyle: TextStyle(),
-                      selectedDateStyle: TextStyle(),
-                      inactiveDateStyle: TextStyle(),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                        child: FlutterFlowCalendar(
+                          color: FlutterFlowTheme.of(context).primary,
+                          iconColor: FlutterFlowTheme.of(context).primary,
+                          weekFormat: false,
+                          weekStartsMonday: true,
+                          initialDate: FFAppState().customDate,
+                          onChange: (DateTimeRange? newSelectedDate) {
+                            setState(() =>
+                                _model.calendarSelectedDay = newSelectedDate);
+                          },
+                          titleStyle: FlutterFlowTheme.of(context).titleMedium,
+                          dayOfWeekStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).primary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.0,
+                          ),
+                          dateStyle: TextStyle(
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          selectedDateStyle: TextStyle(),
+                          inactiveDateStyle: TextStyle(),
+                        ),
+                      ),
                     ),
+                  ),
+                  Text(
+                    valueOrDefault<String>(
+                      dateTimeFormat(
+                          'yMMMd', _model.calendarSelectedDay?.start),
+                      'Date',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                  FlutterFlowRadioButton(
+                    options: ['Available', 'Not Available'].toList(),
+                    onChanged: (val) => setState(() {}),
+                    controller: _model.radioButtonValueController ??=
+                        FormFieldController<String>(null),
+                    optionHeight: 25.0,
+                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'DM Sans',
+                          color: Colors.black,
+                        ),
+                    selectedTextStyle: FlutterFlowTheme.of(context).titleMedium,
+                    buttonPosition: RadioButtonPosition.left,
+                    direction: Axis.horizontal,
+                    radioButtonColor: Colors.blue,
+                    inactiveRadioButtonColor: Color(0x8A000000),
+                    toggleable: false,
+                    horizontalAlignment: WrapAlignment.center,
+                    verticalAlignment: WrapCrossAlignment.start,
                   ),
                 ],
               ),

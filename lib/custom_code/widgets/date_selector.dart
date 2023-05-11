@@ -70,6 +70,9 @@ class _DateSelectorState extends State<DateSelector> {
     });
   }
 
+  Color containerColor = Colors.white;
+  Color iconColor = Color(0xFFB9B6E2);
+  // Rest of the widget code...
   @override
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat('yMMMd');
@@ -82,26 +85,28 @@ class _DateSelectorState extends State<DateSelector> {
           cursor: SystemMouseCursors.click,
           onHover: (PointerEvent event) {
             setState(() {
-              // Change the color of the icon when hovered over
-              // Example: color: Colors.red,
+              // Change the color of the icon and container when hovered over
+              iconColor = Colors.white;
+              containerColor = Color(0xFFB9B6E2);
             });
           },
           onExit: (PointerEvent event) {
             setState(() {
-              // Change the color of the icon when the cursor is not hovering over it
-              // Example: color: Color(0xFFB9B6E2),
+              // Change the color of the icon and container when the cursor is not hovering over it
+              iconColor = Color(0xFFB9B6E2);
+              containerColor = Colors.white;
             });
           },
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: containerColor,
               borderRadius: BorderRadius.circular(8),
             ),
             child: IconButton(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
               onPressed: _decrementDate,
               icon: Icon(Icons.chevron_left_sharp),
-              color: Color(0xFFB9B6E2),
+              color: iconColor,
               iconSize: 24,
             ),
           ),
@@ -112,13 +117,6 @@ class _DateSelectorState extends State<DateSelector> {
             _selectDate(context);
           },
           child: Container(
-            //padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            // decoration: BoxDecoration(
-            //  border: Border.all(
-            //    color: FlutterFlowTheme.of(context).primaryColor,
-            //  ),
-            //  borderRadius: BorderRadius.circular(4),
-            //),
             child: Text(
               formatter.format(currentDate),
               style: TextStyle(
@@ -134,25 +132,27 @@ class _DateSelectorState extends State<DateSelector> {
           onHover: (PointerEvent event) {
             setState(() {
               // Change the color of the icon when hovered over
-              // Example: color: Colors.red,
+              iconColor = Colors.white;
+              containerColor = Color(0xFFB9B6E2);
             });
           },
           onExit: (PointerEvent event) {
             setState(() {
               // Change the color of the icon when the cursor is not hovering over it
-              // Example: color: Color(0xFFB9B6E2),
+              iconColor = Color(0xFFB9B6E2);
+              containerColor = Colors.white;
             });
           },
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: containerColor,
               borderRadius: BorderRadius.circular(8),
             ),
             child: IconButton(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
               onPressed: _incrementDate,
               icon: Icon(Icons.chevron_right_sharp),
-              color: Color(0xFFB9B6E2),
+              color: iconColor,
               iconSize: 24,
             ),
           ),

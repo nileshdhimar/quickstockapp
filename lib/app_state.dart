@@ -52,10 +52,46 @@ class FFAppState extends ChangeNotifier {
     _UserInfo = _value;
   }
 
-  DateTime? _customDate = DateTime.fromMillisecondsSinceEpoch(1683273540000);
+  DateTime? _customDate = DateTime.fromMillisecondsSinceEpoch(946731480000);
   DateTime? get customDate => _customDate;
   set customDate(DateTime? _value) {
     _customDate = _value;
+  }
+
+  List<String> _imageUplaod = [];
+  List<String> get imageUplaod => _imageUplaod;
+  set imageUplaod(List<String> _value) {
+    _imageUplaod = _value;
+  }
+
+  void addToImageUplaod(String _value) {
+    _imageUplaod.add(_value);
+  }
+
+  void removeFromImageUplaod(String _value) {
+    _imageUplaod.remove(_value);
+  }
+
+  void removeAtIndexFromImageUplaod(int _index) {
+    _imageUplaod.removeAt(_index);
+  }
+
+  List<String> _urlImages = [];
+  List<String> get urlImages => _urlImages;
+  set urlImages(List<String> _value) {
+    _urlImages = _value;
+  }
+
+  void addToUrlImages(String _value) {
+    _urlImages.add(_value);
+  }
+
+  void removeFromUrlImages(String _value) {
+    _urlImages.remove(_value);
+  }
+
+  void removeAtIndexFromUrlImages(int _index) {
+    _urlImages.removeAt(_index);
   }
 }
 

@@ -330,6 +330,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'InstListingForInstallerCopy',
           path: '/instListingForInstallerCopy',
           builder: (context, params) => InstListingForInstallerCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList',
+          path: '/serviceList',
+          builder: (context, params) => ServiceListWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-PhotoTab',
+          path: '/serviceListPhotoTab',
+          builder: (context, params) => ServiceListPhotoTabWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-ScanTab',
+          path: '/serviceListScanTab',
+          builder: (context, params) => ServiceListScanTabWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-DetailTab',
+          path: '/serviceListDetailTab',
+          builder: (context, params) => ServiceListDetailTabWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

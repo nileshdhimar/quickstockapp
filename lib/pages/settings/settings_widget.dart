@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -63,7 +64,36 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pushNamed('Dashboard');
+                _model.userInfoOutput = await GetUserInfoCall.call(
+                  userId: getJsonField(
+                    FFAppState().UserInfo,
+                    r'''$.id''',
+                  ),
+                  token: FFAppState().Token,
+                  tenantId: FFAppState().TenantId,
+                );
+                if ((_model.userInfoOutput?.succeeded ?? true)) {
+                  setState(() {
+                    FFAppState().Token = FFAppState().Token;
+                    FFAppState().UserInfo = getJsonField(
+                      FFAppState().UserInfo,
+                      r'''$.id''',
+                    );
+                  });
+                  if (getJsonField(
+                        FFAppState().UserInfo,
+                        r'''$.result.isInstaller''',
+                      ) ==
+                      true) {
+                    context.pushNamed('Dashboard-Installer');
+                  } else {
+                    context.pushNamed('Dashboard');
+                  }
+                } else {
+                  context.pushNamed('Login');
+                }
+
+                setState(() {});
               },
             ),
           ),
