@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'service_list_scan_tab_model.dart';
@@ -58,8 +60,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
     super.initState();
     _model = createModel(context, () => ServiceListScanTabModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textController2 ??= TextEditingController(text: '2702202301');
+    _model.serialnoTextController ??= TextEditingController();
   }
 
   @override
@@ -270,14 +271,14 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 25.0),
+                                0.0, 0.0, 0.0, 30.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: _model.textController1,
+                                    controller: _model.serialnoTextController,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Serial No',
@@ -323,7 +324,9 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           fontFamily: 'DM Sans',
                                           fontSize: 14.0,
                                         ),
-                                    validator: _model.textController1Validator
+                                    maxLines: null,
+                                    validator: _model
+                                        .serialnoTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -333,6 +336,28 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 5.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 25.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 50.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .buttonIcon,
+                                          icon: Icon(
+                                            Icons.add,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 26.0,
+                                          ),
+                                          onPressed: () async {
+                                            setState(() {});
+                                          },
+                                        ),
+                                      ),
                                       FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 25.0,
@@ -346,8 +371,17 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               .primaryText,
                                           size: 26.0,
                                         ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
+                                        onPressed: () async {
+                                          _model.barcodeScan =
+                                              await FlutterBarcodeScanner
+                                                  .scanBarcode(
+                                            '#C62828', // scanning line color
+                                            'Cancel', // cancel button text
+                                            true, // whether to show the flash icon
+                                            ScanMode.QR,
+                                          );
+
+                                          setState(() {});
                                         },
                                       ),
                                     ],
@@ -358,7 +392,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 10.0),
+                                0.0, 0.0, 0.0, 5.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -369,7 +403,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                                 Text(
@@ -378,89 +412,76 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 20.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _model.textController2,
-                                    readOnly: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Serial No',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .txtBoxBdr,
-                                          width: 1.0,
+                          Divider(
+                            thickness: 2.0,
+                            color: FlutterFlowTheme.of(context).test,
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ListView(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            _model.barcodeScan,
+                                            'NoBarcode',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'DM Sans',
+                                                fontSize: 18.0,
+                                              ),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 5.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 19.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 38.0,
+                                            fillColor: Color(0xFFF8D7DA),
+                                            icon: FaIcon(
+                                              FontAwesomeIcons.trashAlt,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 16.0,
+                                            ),
+                                            onPressed: () {
+                                              print('IconButton pressed ...');
+                                            },
+                                          ),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
+                                      ],
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'DM Sans',
-                                          fontSize: 14.0,
-                                        ),
-                                    validator: _model.textController2Validator
-                                        .asValidator(context),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/correct_1.png',
-                                        width: 50.0,
-                                        height: 50.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            thickness: 1.0,
+                            color: FlutterFlowTheme.of(context).accent4,
                           ),
                         ],
                       ),

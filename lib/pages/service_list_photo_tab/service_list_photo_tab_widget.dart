@@ -1,13 +1,15 @@
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'service_list_photo_tab_model.dart';
 export 'service_list_photo_tab_model.dart';
@@ -103,40 +105,10 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 size: 30.0,
               ),
               onPressed: () async {
-                final selectedMedia = await selectMediaWithSourceBottomSheet(
-                  context: context,
-                  maxWidth: 100.00,
-                  maxHeight: 100.00,
-                  allowPhoto: true,
+                await actions.takePhoto(
+                  context,
                 );
-                if (selectedMedia != null &&
-                    selectedMedia.every(
-                        (m) => validateFileFormat(m.storagePath, context))) {
-                  setState(() => _model.isDataUploading = true);
-                  var selectedUploadedFiles = <FFUploadedFile>[];
-
-                  try {
-                    selectedUploadedFiles = selectedMedia
-                        .map((m) => FFUploadedFile(
-                              name: m.storagePath.split('/').last,
-                              bytes: m.bytes,
-                              height: m.dimensions?.height,
-                              width: m.dimensions?.width,
-                              blurHash: m.blurHash,
-                            ))
-                        .toList();
-                  } finally {
-                    _model.isDataUploading = false;
-                  }
-                  if (selectedUploadedFiles.length == selectedMedia.length) {
-                    setState(() {
-                      _model.uploadedLocalFile = selectedUploadedFiles.first;
-                    });
-                  } else {
-                    setState(() {});
-                    return;
-                  }
-                }
+                setState(() {});
               },
             ),
           ],
@@ -172,27 +144,63 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                         child: Builder(
                           builder: (context) {
                             final urlImage = FFAppState().urlImages.toList();
-                            return GridView.builder(
-                              padding: EdgeInsets.zero,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 10.0,
-                                mainAxisSpacing: 10.0,
-                                childAspectRatio: 1.0,
-                              ),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: urlImage.length,
-                              itemBuilder: (context, urlImageIndex) {
-                                final urlImageItem = urlImage[urlImageIndex];
-                                return Image.network(
-                                  urlImageItem,
-                                  width: 100.0,
-                                  height: 100.0,
-                                  fit: BoxFit.cover,
-                                );
+                            return RefreshIndicator(
+                              onRefresh: () async {
+                                setState(() {});
                               },
+                              child: GridView.builder(
+                                padding: EdgeInsets.zero,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 10.0,
+                                  mainAxisSpacing: 10.0,
+                                  childAspectRatio: 1.0,
+                                ),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: urlImage.length,
+                                itemBuilder: (context, urlImageIndex) {
+                                  final urlImageItem = urlImage[urlImageIndex];
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: FlutterFlowExpandedImageView(
+                                            image: Image.network(
+                                              urlImageItem,
+                                              fit: BoxFit.contain,
+                                            ),
+                                            allowRotation: false,
+                                            tag: urlImageItem,
+                                            useHeroAnimation: true,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Hero(
+                                      tag: urlImageItem,
+                                      transitionOnUserGestures: true,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.network(
+                                          urlImageItem,
+                                          width: 100.0,
+                                          height: 100.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             );
                           },
                         ),
