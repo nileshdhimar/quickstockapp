@@ -105,13 +105,8 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 30.0,
               ),
-              showLoadingIndicator: true,
               onPressed: () async {
-                _model.image = await actions.takePhoto(
-                  context,
-                );
-                setState(() {});
-
+                await actions.imagePickerDemo();
                 setState(() {});
               },
             ),
