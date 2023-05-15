@@ -3,7 +3,8 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/components/custom_photo_upload/custom_photo_upload_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -106,10 +107,22 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 size: 30.0,
               ),
               onPressed: () async {
-                await actions.showImagePicker(
-                  context,
-                );
-                setState(() {});
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  enableDrag: false,
+                  context: context,
+                  builder: (bottomSheetContext) {
+                    return GestureDetector(
+                      onTap: () =>
+                          FocusScope.of(context).requestFocus(_unfocusNode),
+                      child: Padding(
+                        padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                        child: CustomPhotoUploadWidget(),
+                      ),
+                    );
+                  },
+                ).then((value) => setState(() {}));
               },
             ),
           ],
@@ -123,7 +136,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
           children: [
             Container(
               width: 100.0,
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.83,
               decoration: BoxDecoration(
                 color: Color(0x00FFFFFF),
               ),
@@ -137,7 +150,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                           EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.8,
+                        height: MediaQuery.of(context).size.height * 0.73,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -204,8 +217,6 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                                                   ),
                                                 );
                                               },
-                                              onDoubleTap: () async {},
-                                              onLongPress: () async {},
                                               child: Hero(
                                                 tag: valueOrDefault<String>(
                                                   imageUploadItem,
@@ -246,6 +257,39 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                               ),
                             ),
                           ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Upload',
+                        icon: Icon(
+                          Icons.upload_file,
+                          size: 15.0,
+                        ),
+                        options: FFButtonOptions(
+                          width: 130.0,
+                          height: 42.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'DM Sans',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),
