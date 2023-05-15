@@ -59,7 +59,7 @@ class FFAppState extends ChangeNotifier {
     _customDate = _value;
   }
 
-  List<String> _imageUplaod = [];
+  List<String> _imageUplaod = ['default/path'];
   List<String> get imageUplaod => _imageUplaod;
   set imageUplaod(List<String> _value) {
     _imageUplaod = _value;

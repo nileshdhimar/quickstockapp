@@ -43,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : SplashWidget(),
+          : ServiceListPhotoTabWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -61,7 +61,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : SplashWidget(),
+              : ServiceListPhotoTabWidget(),
         ),
         FFRoute(
           name: 'Splash',

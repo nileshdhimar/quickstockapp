@@ -105,10 +105,13 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 30.0,
               ),
+              showLoadingIndicator: true,
               onPressed: () async {
-                await actions.takePhoto(
+                _model.image = await actions.takePhoto(
                   context,
                 );
+                setState(() {});
+
                 setState(() {});
               },
             ),
@@ -148,87 +151,99 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                             Expanded(
                               child: Builder(
                                 builder: (context) {
-                                  final serialNOList =
+                                  final imageUpload =
                                       FFAppState().urlImages.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: serialNOList.length,
-                                    itemBuilder: (context, serialNOListIndex) {
-                                      final serialNOListItem =
-                                          serialNOList[serialNOListIndex];
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child:
-                                                      FlutterFlowExpandedImageView(
-                                                    image: CachedNetworkImage(
-                                                      imageUrl: valueOrDefault<
-                                                          String>(
-                                                        serialNOListItem,
-                                                        'Images',
+                                  return RefreshIndicator(
+                                    onRefresh: () async {
+                                      setState(() {});
+                                    },
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: imageUpload.length,
+                                      itemBuilder: (context, imageUploadIndex) {
+                                        final imageUploadItem =
+                                            imageUpload[imageUploadIndex];
+                                        return Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 10.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child:
+                                                        FlutterFlowExpandedImageView(
+                                                      image: CachedNetworkImage(
+                                                        imageUrl:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          imageUploadItem,
+                                                          'Image',
+                                                        ),
+                                                        fit: BoxFit.contain,
                                                       ),
-                                                      fit: BoxFit.contain,
+                                                      allowRotation: true,
+                                                      tag: valueOrDefault<
+                                                          String>(
+                                                        imageUploadItem,
+                                                        'Image' +
+                                                            '$imageUploadIndex',
+                                                      ),
+                                                      useHeroAnimation: true,
                                                     ),
-                                                    allowRotation: true,
-                                                    tag: valueOrDefault<String>(
-                                                      serialNOListItem,
-                                                      'Images' +
-                                                          '$serialNOListIndex',
-                                                    ),
-                                                    useHeroAnimation: true,
                                                   ),
+                                                );
+                                              },
+                                              onDoubleTap: () async {},
+                                              onLongPress: () async {},
+                                              child: Hero(
+                                                tag: valueOrDefault<String>(
+                                                  imageUploadItem,
+                                                  'Image' + '$imageUploadIndex',
                                                 ),
-                                              );
-                                            },
-                                            onDoubleTap: () async {},
-                                            onLongPress: () async {},
-                                            child: Hero(
-                                              tag: valueOrDefault<String>(
-                                                serialNOListItem,
-                                                'Images' + '$serialNOListIndex',
-                                              ),
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      valueOrDefault<String>(
-                                                    serialNOListItem,
-                                                    'Images',
+                                                transitionOnUserGestures: true,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        valueOrDefault<String>(
+                                                      imageUploadItem,
+                                                      'Image',
+                                                    ),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.35,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.15,
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.35,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.15,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        );
+                                      },
+                                    ),
                                   );
                                 },
                               ),

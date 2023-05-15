@@ -14,6 +14,11 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class ServiceListPhotoTabModel extends FlutterFlowModel {
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Custom Action - takePhoto] action in IconButton widget.
+  String? image;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

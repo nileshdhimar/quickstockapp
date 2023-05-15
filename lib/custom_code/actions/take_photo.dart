@@ -11,6 +11,38 @@ import 'package:image_picker/image_picker.dart';
 
 final ImagePicker _picker = ImagePicker();
 
+Future<void> showImagePicker(BuildContext context) async {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        child: Wrap(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.camera_alt),
+              title: Text('Take Photo'),
+              onTap: () async {
+                Navigator.pop(context);
+                String error = await takePhoto(context);
+                // Handle any errors returned by takePhoto()
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.image),
+              title: Text('Choose from Gallery'),
+              onTap: () async {
+                Navigator.pop(context);
+                String error = await selectPhoto(context);
+                // Handle any errors returned by selectPhoto()
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
 Future<String> takePhoto(BuildContext context) async {
   String error;
 
