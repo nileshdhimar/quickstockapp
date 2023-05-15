@@ -106,7 +106,9 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 size: 30.0,
               ),
               onPressed: () async {
-                await actions.imagePickerDemo();
+                await actions.showImagePicker(
+                  context,
+                );
                 setState(() {});
               },
             ),
