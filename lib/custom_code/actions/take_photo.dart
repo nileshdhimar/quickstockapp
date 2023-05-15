@@ -34,3 +34,27 @@ Future<String> takePhoto(BuildContext context) async {
 
   return 'error';
 }
+
+Future<String> selectPhoto(BuildContext context) async {
+  String error;
+
+  XFile? photoURL;
+
+  try {
+    photoURL = await _picker.pickImage(source: ImageSource.gallery);
+    XFile nonNullablePhotoURL =
+        photoURL!; // Use the null-aware operator `!` to convert the nullable `photoURL` to a non-nullable `XFile`
+    if (nonNullablePhotoURL != null) {
+      FFAppState().urlImages.add(photoURL.path);
+    }
+
+    // Do something with `nonNullablePhotoURL`
+  } catch (e) {
+    print('Error picking image: $e');
+
+    // Assign a default value to `nonNullablePhotoURL`
+    XFile nonNullablePhotoURL = XFile('default/path');
+  }
+
+  return 'error';
+}

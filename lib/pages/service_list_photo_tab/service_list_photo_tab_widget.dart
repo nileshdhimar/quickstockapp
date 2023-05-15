@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -133,7 +134,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.8,
@@ -141,68 +142,98 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: Builder(
-                          builder: (context) {
-                            final urlImage = FFAppState().urlImages.toList();
-                            return RefreshIndicator(
-                              onRefresh: () async {
-                                setState(() {});
-                              },
-                              child: GridView.builder(
-                                padding: EdgeInsets.zero,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  crossAxisSpacing: 10.0,
-                                  mainAxisSpacing: 10.0,
-                                  childAspectRatio: 1.0,
-                                ),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: urlImage.length,
-                                itemBuilder: (context, urlImageIndex) {
-                                  final urlImageItem = urlImage[urlImageIndex];
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          type: PageTransitionType.fade,
-                                          child: FlutterFlowExpandedImageView(
-                                            image: Image.network(
-                                              urlImageItem,
-                                              fit: BoxFit.contain,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Builder(
+                                builder: (context) {
+                                  final serialNOList =
+                                      FFAppState().urlImages.toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: serialNOList.length,
+                                    itemBuilder: (context, serialNOListIndex) {
+                                      final serialNOListItem =
+                                          serialNOList[serialNOListIndex];
+                                      return Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                  type: PageTransitionType.fade,
+                                                  child:
+                                                      FlutterFlowExpandedImageView(
+                                                    image: CachedNetworkImage(
+                                                      imageUrl: valueOrDefault<
+                                                          String>(
+                                                        serialNOListItem,
+                                                        'Images',
+                                                      ),
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                    allowRotation: true,
+                                                    tag: valueOrDefault<String>(
+                                                      serialNOListItem,
+                                                      'Images' +
+                                                          '$serialNOListIndex',
+                                                    ),
+                                                    useHeroAnimation: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            onDoubleTap: () async {},
+                                            onLongPress: () async {},
+                                            child: Hero(
+                                              tag: valueOrDefault<String>(
+                                                serialNOListItem,
+                                                'Images' + '$serialNOListIndex',
+                                              ),
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                                child: CachedNetworkImage(
+                                                  imageUrl:
+                                                      valueOrDefault<String>(
+                                                    serialNOListItem,
+                                                    'Images',
+                                                  ),
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.35,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.15,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
                                             ),
-                                            allowRotation: false,
-                                            tag: urlImageItem,
-                                            useHeroAnimation: true,
                                           ),
                                         ),
                                       );
                                     },
-                                    child: Hero(
-                                      tag: urlImageItem,
-                                      transitionOnUserGestures: true,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.network(
-                                          urlImageItem,
-                                          width: 100.0,
-                                          height: 100.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
                                   );
                                 },
                               ),
-                            );
-                          },
+                            ),
+                          ],
                         ),
                       ),
                     ),
