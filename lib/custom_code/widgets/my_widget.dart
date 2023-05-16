@@ -28,16 +28,24 @@ class _MyWidgetState extends State<MyWidget> {
   List<String> barcodeValues = [];
 
   Future<void> scanBarcode() async {
-    try {
-      while (true) {
+    bool doneScanning = false;
+    List<String> scannedValues = [];
+
+    while (!doneScanning) {
+      try {
         ScanResult result = await BarcodeScanner.scan();
         String barcode = result.rawContent ?? '';
-        setState(() {
-          barcodeValues.add(barcode);
-        });
+        if (barcode.isEmpty) {
+          doneScanning = true;
+        } else if (!scannedValues.contains(barcode)) {
+          setState(() {
+            scannedValues.add(barcode);
+          });
+        }
+      } catch (e) {
+        print(e);
+        doneScanning = true;
       }
-    } catch (e) {
-      print(e);
     }
   }
 
