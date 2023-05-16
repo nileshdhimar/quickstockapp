@@ -94,7 +94,7 @@ class FFAppState extends ChangeNotifier {
     _urlImages.removeAt(_index);
   }
 
-  List<String> _serialNo = [];
+  List<String> _serialNo = ['barcodeScan'];
   List<String> get serialNo => _serialNo;
   set serialNo(List<String> _value) {
     _serialNo = _value;
@@ -110,6 +110,42 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromSerialNo(int _index) {
     _serialNo.removeAt(_index);
+  }
+
+  List<String> _barcodeValues = [];
+  List<String> get barcodeValues => _barcodeValues;
+  set barcodeValues(List<String> _value) {
+    _barcodeValues = _value;
+  }
+
+  void addToBarcodeValues(String _value) {
+    _barcodeValues.add(_value);
+  }
+
+  void removeFromBarcodeValues(String _value) {
+    _barcodeValues.remove(_value);
+  }
+
+  void removeAtIndexFromBarcodeValues(int _index) {
+    _barcodeValues.removeAt(_index);
+  }
+
+  List<String> _scannedValues = [];
+  List<String> get scannedValues => _scannedValues;
+  set scannedValues(List<String> _value) {
+    _scannedValues = _value;
+  }
+
+  void addToScannedValues(String _value) {
+    _scannedValues.add(_value);
+  }
+
+  void removeFromScannedValues(String _value) {
+    _scannedValues.remove(_value);
+  }
+
+  void removeAtIndexFromScannedValues(int _index) {
+    _scannedValues.removeAt(_index);
   }
 }
 

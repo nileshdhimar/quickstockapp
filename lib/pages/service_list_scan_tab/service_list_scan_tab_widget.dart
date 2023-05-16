@@ -2,11 +2,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -380,17 +380,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           size: 26.0,
                                         ),
                                         onPressed: () async {
-                                          _model.barcodeScan =
-                                              await FlutterBarcodeScanner
-                                                  .scanBarcode(
-                                            '#C62828', // scanning line color
-                                            'Cancel', // cancel button text
-                                            true, // whether to show the flash icon
-                                            ScanMode.QR,
-                                          );
-
-                                          setState(() {});
-
+                                          await actions.scanBarcode();
                                           setState(() {});
                                         },
                                       ),
@@ -430,7 +420,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                           ),
                           Divider(
                             thickness: 2.0,
-                            color: FlutterFlowTheme.of(context).test,
+                            color: FlutterFlowTheme.of(context).accent4,
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
@@ -438,7 +428,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               Builder(
                                 builder: (context) {
                                   final serialnoList =
-                                      FFAppState().serialNo.toList();
+                                      FFAppState().barcodeValues.toList();
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
@@ -456,10 +446,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              valueOrDefault<String>(
-                                                _model.barcodeScan,
-                                                'barcodescan',
-                                              ),
+                                              serialnoListItem,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
