@@ -390,6 +390,8 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           );
 
                                           setState(() {});
+
+                                          setState(() {});
                                         },
                                       ),
                                     ],

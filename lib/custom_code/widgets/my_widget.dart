@@ -29,9 +29,9 @@ class _MyWidgetState extends State<MyWidget> {
 
   Future<void> scanBarcode() async {
     try {
-      ScanResult result = await BarcodeScanner.scan();
-      String barcode = result.rawContent;
-      if (barcode != null) {
+      while (true) {
+        ScanResult result = await BarcodeScanner.scan();
+        String barcode = result.rawContent ?? '';
         setState(() {
           barcodeValues.add(barcode);
         });
