@@ -38,15 +38,17 @@ class _MyWidgetState extends State<MyWidget> {
         if (barcode.isEmpty) {
           doneScanning = true;
         } else if (!scannedValues.contains(barcode)) {
-          setState(() {
-            scannedValues.add(barcode);
-          });
+          scannedValues.add(barcode);
         }
       } catch (e) {
         print(e);
         doneScanning = true;
       }
     }
+
+    setState(() {
+      barcodeValues = scannedValues;
+    });
   }
 
   @override
