@@ -107,3 +107,5 @@ export '/pages/service_list_scan_tab/service_list_scan_tab_widget.dart'
     show ServiceListScanTabWidget;
 export '/pages/service_list_detail_tab/service_list_detail_tab_widget.dart'
     show ServiceListDetailTabWidget;
+export '/pages/service_list_photo_tab_copy/service_list_photo_tab_copy_widget.dart'
+    show ServiceListPhotoTabCopyWidget;

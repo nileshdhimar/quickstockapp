@@ -214,6 +214,7 @@ class _CustomPhotoUploadWidgetState extends State<CustomPhotoUploadWidget> {
                                                 context,
                                               );
                                               setState(() {});
+                                              Navigator.pop(context);
                                             },
                                             child: Text(
                                               'Take Photo',

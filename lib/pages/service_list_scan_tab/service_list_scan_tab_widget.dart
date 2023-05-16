@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -279,6 +280,9 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                 Expanded(
                                   child: TextFormField(
                                     controller: _model.serialnoTextController,
+                                    onFieldSubmitted: (_) async {
+                                      setState(() {});
+                                    },
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Serial No',
@@ -354,7 +358,11 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                             size: 26.0,
                                           ),
                                           onPressed: () async {
-                                            setState(() {});
+                                            await Clipboard.setData(
+                                                ClipboardData(
+                                                    text: _model
+                                                        .serialnoTextController
+                                                        .text));
                                           },
                                         ),
                                       ),
@@ -425,57 +433,67 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              ListView(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 5.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          valueOrDefault<String>(
-                                            _model.barcodeScan,
-                                            'NoBarcode',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'DM Sans',
-                                                fontSize: 18.0,
+                              Builder(
+                                builder: (context) {
+                                  final serialnoList =
+                                      FFAppState().serialNo.toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: serialnoList.length,
+                                    itemBuilder: (context, serialnoListIndex) {
+                                      final serialnoListItem =
+                                          serialnoList[serialnoListIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 5.0, 0.0, 5.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                _model.barcodeScan,
+                                                'barcodescan',
                                               ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 5.0, 0.0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 19.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 38.0,
-                                            fillColor: Color(0xFFF8D7DA),
-                                            icon: FaIcon(
-                                              FontAwesomeIcons.trashAlt,
-                                              color:
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 16.0,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'DM Sans',
+                                                        fontSize: 18.0,
+                                                      ),
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: FlutterFlowIconButton(
+                                                borderColor: Colors.transparent,
+                                                borderRadius: 19.0,
+                                                borderWidth: 1.0,
+                                                buttonSize: 38.0,
+                                                fillColor: Color(0xFFF8D7DA),
+                                                icon: FaIcon(
+                                                  FontAwesomeIcons.trashAlt,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  size: 16.0,
+                                                ),
+                                                onPressed: () {
+                                                  print(
+                                                      'IconButton pressed ...');
+                                                },
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ],
                           ),

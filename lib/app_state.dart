@@ -17,7 +17,6 @@ class FFAppState extends ChangeNotifier {
     prefs = await SharedPreferences.getInstance();
     _TenantName = prefs.getString('ff_TenantName') ?? _TenantName;
     _TenantId = prefs.getInt('ff_TenantId') ?? _TenantId;
-    _serialNo = prefs.getString('ff_serialNo') ?? _serialNo;
   }
 
   void update(VoidCallback callback) {
@@ -95,11 +94,22 @@ class FFAppState extends ChangeNotifier {
     _urlImages.removeAt(_index);
   }
 
-  String _serialNo = '';
-  String get serialNo => _serialNo;
-  set serialNo(String _value) {
+  List<String> _serialNo = [];
+  List<String> get serialNo => _serialNo;
+  set serialNo(List<String> _value) {
     _serialNo = _value;
-    prefs.setString('ff_serialNo', _value);
+  }
+
+  void addToSerialNo(String _value) {
+    _serialNo.add(_value);
+  }
+
+  void removeFromSerialNo(String _value) {
+    _serialNo.remove(_value);
+  }
+
+  void removeAtIndexFromSerialNo(int _index) {
+    _serialNo.removeAt(_index);
   }
 }
 

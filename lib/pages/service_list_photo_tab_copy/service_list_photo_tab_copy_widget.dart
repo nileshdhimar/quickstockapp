@@ -1,32 +1,29 @@
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/custom_photo_upload/custom_photo_upload_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'service_list_photo_tab_model.dart';
-export 'service_list_photo_tab_model.dart';
+import 'service_list_photo_tab_copy_model.dart';
+export 'service_list_photo_tab_copy_model.dart';
 
-class ServiceListPhotoTabWidget extends StatefulWidget {
-  const ServiceListPhotoTabWidget({Key? key}) : super(key: key);
+class ServiceListPhotoTabCopyWidget extends StatefulWidget {
+  const ServiceListPhotoTabCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _ServiceListPhotoTabWidgetState createState() =>
-      _ServiceListPhotoTabWidgetState();
+  _ServiceListPhotoTabCopyWidgetState createState() =>
+      _ServiceListPhotoTabCopyWidgetState();
 }
 
-class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
-    with TickerProviderStateMixin {
-  late ServiceListPhotoTabModel _model;
+class _ServiceListPhotoTabCopyWidgetState
+    extends State<ServiceListPhotoTabCopyWidget> with TickerProviderStateMixin {
+  late ServiceListPhotoTabCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -39,7 +36,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, -20.0),
+          begin: Offset(0.0, -64.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -49,7 +46,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ServiceListPhotoTabModel());
+    _model = createModel(context, () => ServiceListPhotoTabCopyModel());
   }
 
   @override
@@ -74,13 +71,13 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 28.0,
+            borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 56.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: FlutterFlowTheme.of(context).bottomMenu,
-              size: 22.0,
+              size: 26.0,
             ),
             onPressed: () async {
               context.pushNamed('ServiceList');
@@ -91,20 +88,20 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'DM Sans',
                   color: FlutterFlowTheme.of(context).bottomMenu,
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.w500,
                 ),
           ),
           actions: [
             FlutterFlowIconButton(
               borderColor: Colors.transparent,
-              borderRadius: 28.0,
-              borderWidth: 0.0,
-              buttonSize: 56.0,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
               icon: Icon(
                 Icons.add,
                 color: FlutterFlowTheme.of(context).bottomMenu,
-                size: 26.0,
+                size: 30.0,
               ),
               onPressed: () async {
                 await showModalBottomSheet(
@@ -136,7 +133,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
           children: [
             Container(
               width: 100.0,
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.83,
               decoration: BoxDecoration(
                 color: Color(0x00FFFFFF),
               ),
@@ -145,142 +142,12 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.68,
-                        decoration: BoxDecoration(
-                          color: Color(0x00413C73),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final imageUpload =
-                                      FFAppState().urlImages.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: imageUpload.length,
-                                    itemBuilder: (context, imageUploadIndex) {
-                                      final imageUploadItem =
-                                          imageUpload[imageUploadIndex];
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.95, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child:
-                                                      FlutterFlowExpandedImageView(
-                                                    image: CachedNetworkImage(
-                                                      imageUrl: valueOrDefault<
-                                                          String>(
-                                                        imageUploadItem,
-                                                        'Image',
-                                                      ),
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                    allowRotation: true,
-                                                    tag: valueOrDefault<String>(
-                                                      imageUploadItem,
-                                                      'Image' +
-                                                          '$imageUploadIndex',
-                                                    ),
-                                                    useHeroAnimation: true,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            onLongPress: () async {},
-                                            child: Hero(
-                                              tag: valueOrDefault<String>(
-                                                imageUploadItem,
-                                                'Image' + '$imageUploadIndex',
-                                              ),
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      valueOrDefault<String>(
-                                                    imageUploadItem,
-                                                    'Image',
-                                                  ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.35,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.15,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Upload',
-                        icon: Icon(
-                          Icons.cloud_upload,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'DM Sans',
-                                color: FlutterFlowTheme.of(context).bottomMenu,
-                                fontSize: 14.0,
-                              ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: custom_widgets.MyWidget(
+                        width: MediaQuery.of(context).size.width * 1.0,
+                        height: MediaQuery.of(context).size.height * 0.8,
                       ),
                     ),
                   ],
@@ -408,7 +275,7 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ServiceList-PhotoTab');
+                            context.pushNamed('ServiceList-PhotoTabCopy');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
