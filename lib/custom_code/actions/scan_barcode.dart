@@ -30,5 +30,6 @@ Future<void> scanBarcode() async {
     }
   }
 
-  barcodeValues = scannedValues; // Store the value in barcodeValues
+  FFAppState().barcodeValues =
+      scannedValues; // Store the value in barcodeValues
 }

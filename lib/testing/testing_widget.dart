@@ -151,29 +151,34 @@ class _TestingWidgetState extends State<TestingWidget> {
                 Builder(
                   builder: (context) {
                     final serialnoList = FFAppState().barcodeValues.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: serialnoList.length,
-                      itemBuilder: (context, serialnoListIndex) {
-                        final serialnoListItem =
-                            serialnoList[serialnoListIndex];
-                        return ListTile(
-                          title: Text(
-                            serialnoListItem,
-                            style: FlutterFlowTheme.of(context).headlineSmall,
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: FlutterFlowTheme.of(context).accent2,
-                            size: 20.0,
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
-                        );
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        setState(() {});
                       },
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: serialnoList.length,
+                        itemBuilder: (context, serialnoListIndex) {
+                          final serialnoListItem =
+                              serialnoList[serialnoListIndex];
+                          return ListTile(
+                            title: Text(
+                              serialnoListItem,
+                              style: FlutterFlowTheme.of(context).headlineSmall,
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: FlutterFlowTheme.of(context).accent2,
+                              size: 20.0,
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
+                          );
+                        },
+                      ),
                     );
                   },
                 ),
