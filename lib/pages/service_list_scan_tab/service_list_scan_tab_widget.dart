@@ -446,7 +446,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              serialnoListItem,
+                                              serialnoListIndex.toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -485,10 +485,6 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                 },
                               ),
                             ],
-                          ),
-                          Divider(
-                            thickness: 1.0,
-                            color: FlutterFlowTheme.of(context).accent4,
                           ),
                         ],
                       ),
