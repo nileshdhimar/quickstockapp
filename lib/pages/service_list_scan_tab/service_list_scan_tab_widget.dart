@@ -429,58 +429,67 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                 builder: (context) {
                                   final serialnoList =
                                       FFAppState().scannedValues.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: serialnoList.length,
-                                    itemBuilder: (context, serialnoListIndex) {
-                                      final serialnoListItem =
-                                          serialnoList[serialnoListIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 5.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              serialnoListIndex.toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'DM Sans',
-                                                        fontSize: 18.0,
-                                                      ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                              child: FlutterFlowIconButton(
-                                                borderColor: Colors.transparent,
-                                                borderRadius: 19.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 38.0,
-                                                fillColor: Color(0xFFF8D7DA),
-                                                icon: FaIcon(
-                                                  FontAwesomeIcons.trashAlt,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  size: 16.0,
-                                                ),
-                                                onPressed: () {
-                                                  print(
-                                                      'IconButton pressed ...');
-                                                },
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
+                                  return RefreshIndicator(
+                                    onRefresh: () async {
+                                      setState(() {});
                                     },
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: serialnoList.length,
+                                      itemBuilder:
+                                          (context, serialnoListIndex) {
+                                        final serialnoListItem =
+                                            serialnoList[serialnoListIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 5.0, 0.0, 5.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                serialnoListItem,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'DM Sans',
+                                                          fontSize: 18.0,
+                                                        ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 5.0, 0.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderRadius: 19.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 38.0,
+                                                  fillColor: Color(0xFFF8D7DA),
+                                                  icon: FaIcon(
+                                                    FontAwesomeIcons.trashAlt,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    size: 16.0,
+                                                  ),
+                                                  onPressed: () {
+                                                    print(
+                                                        'IconButton pressed ...');
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   );
                                 },
                               ),

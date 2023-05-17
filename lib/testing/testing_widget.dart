@@ -126,7 +126,7 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    await actions.addTextToList();
+                    await actions.scanBarcode();
                     setState(() {});
                   },
                   text: 'Button',
@@ -150,7 +150,7 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final serialnoList = FFAppState().textList.toList();
+                    final serialnoList = FFAppState().scannedValues.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
