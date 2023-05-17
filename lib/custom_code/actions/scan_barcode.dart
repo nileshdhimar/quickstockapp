@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:barcode_scan2/barcode_scan2.dart';
 
-// Set your action name, define your arguments and return parameter,
-// and then add the boilerplate code using the button on the right!
+List<String> barcodeValues = [];
+
 Future<void> scanBarcode() async {
   bool doneScanning = false;
   List<String> scannedValues = [];
@@ -29,4 +29,6 @@ Future<void> scanBarcode() async {
       doneScanning = true;
     }
   }
+
+  barcodeValues = scannedValues; // Store the value in barcodeValues
 }

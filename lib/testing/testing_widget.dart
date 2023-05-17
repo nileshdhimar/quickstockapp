@@ -150,7 +150,7 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final serialnoList = FFAppState().scannedValues.toList();
+                    final serialnoList = FFAppState().barcodeValues.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
