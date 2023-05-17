@@ -428,7 +428,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               Builder(
                                 builder: (context) {
                                   final serialnoList =
-                                      FFAppState().scannedValues.toList();
+                                      FFAppState().barcodeValues.toList();
                                   return RefreshIndicator(
                                     onRefresh: () async {
                                       setState(() {});
