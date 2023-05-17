@@ -43,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : ServiceListScanTabWidget(),
+          : TestingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -61,7 +61,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : ServiceListScanTabWidget(),
+              : TestingWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -355,6 +355,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ServiceList-PhotoTabCopy',
           path: '/serviceListPhotoTabCopy',
           builder: (context, params) => ServiceListPhotoTabCopyWidget(),
+        ),
+        FFRoute(
+          name: 'testing',
+          path: '/testing',
+          builder: (context, params) => TestingWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

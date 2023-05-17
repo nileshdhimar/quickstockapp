@@ -109,3 +109,4 @@ export '/pages/service_list_detail_tab/service_list_detail_tab_widget.dart'
     show ServiceListDetailTabWidget;
 export '/pages/service_list_photo_tab_copy/service_list_photo_tab_copy_widget.dart'
     show ServiceListPhotoTabCopyWidget;
+export '/testing/testing_widget.dart' show TestingWidget;

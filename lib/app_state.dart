@@ -147,6 +147,24 @@ class FFAppState extends ChangeNotifier {
   void removeAtIndexFromScannedValues(int _index) {
     _scannedValues.removeAt(_index);
   }
+
+  List<String> _textList = [];
+  List<String> get textList => _textList;
+  set textList(List<String> _value) {
+    _textList = _value;
+  }
+
+  void addToTextList(String _value) {
+    _textList.add(_value);
+  }
+
+  void removeFromTextList(String _value) {
+    _textList.remove(_value);
+  }
+
+  void removeAtIndexFromTextList(int _index) {
+    _textList.removeAt(_index);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

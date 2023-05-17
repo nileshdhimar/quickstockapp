@@ -96,34 +96,38 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                 ),
           ),
           actions: [
-            FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 28.0,
-              borderWidth: 0.0,
-              buttonSize: 56.0,
-              icon: Icon(
-                Icons.add,
-                color: FlutterFlowTheme.of(context).bottomMenu,
-                size: 26.0,
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 8.0,
+                borderWidth: 0.0,
+                buttonSize: 44.0,
+                fillColor: FlutterFlowTheme.of(context).bottomMenu,
+                icon: Icon(
+                  Icons.add,
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    enableDrag: false,
+                    context: context,
+                    builder: (bottomSheetContext) {
+                      return GestureDetector(
+                        onTap: () =>
+                            FocusScope.of(context).requestFocus(_unfocusNode),
+                        child: Padding(
+                          padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                          child: CustomPhotoUploadWidget(),
+                        ),
+                      );
+                    },
+                  ).then((value) => setState(() {}));
+                },
               ),
-              onPressed: () async {
-                await showModalBottomSheet(
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  enableDrag: false,
-                  context: context,
-                  builder: (bottomSheetContext) {
-                    return GestureDetector(
-                      onTap: () =>
-                          FocusScope.of(context).requestFocus(_unfocusNode),
-                      child: Padding(
-                        padding: MediaQuery.of(bottomSheetContext).viewInsets,
-                        child: CustomPhotoUploadWidget(),
-                      ),
-                    );
-                  },
-                ).then((value) => setState(() {}));
-              },
             ),
           ],
           centerTitle: true,
@@ -317,15 +321,10 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Icon(
-                                  Icons.list_alt_outlined,
-                                  color:
-                                      FlutterFlowTheme.of(context).bottomMenu,
-                                  size: 32.0,
-                                ),
+                              Icon(
+                                Icons.list_alt_outlined,
+                                color: FlutterFlowTheme.of(context).bottomMenu,
+                                size: 32.0,
                               ),
                               Text(
                                 'Detail',
@@ -369,15 +368,11 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: Icon(
-                                    Icons.qr_code_scanner_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).bottomMenu,
-                                    size: 32.0,
-                                  ),
+                                Icon(
+                                  Icons.qr_code_scanner_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).bottomMenu,
+                                  size: 32.0,
                                 ),
                                 Text(
                                   'Scan',
@@ -414,17 +409,13 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Icon(
-                                  Icons.photo_outlined,
-                                  color: FlutterFlowTheme.of(context)
-                                      .bottomMenuActive,
-                                  size: 32.0,
-                                ).animateOnPageLoad(
-                                    animationsMap['iconOnPageLoadAnimation']!),
-                              ),
+                              Icon(
+                                Icons.photo_outlined,
+                                color: FlutterFlowTheme.of(context)
+                                    .bottomMenuActive,
+                                size: 32.0,
+                              ).animateOnPageLoad(
+                                  animationsMap['iconOnPageLoadAnimation']!),
                               Text(
                                 'Photos',
                                 style: FlutterFlowTheme.of(context)
