@@ -11,7 +11,7 @@ import 'package:barcode_scan2/barcode_scan2.dart';
 
 List<String> barcodeValues = [];
 
-Future<void> scanBarcode() async {
+Future<void> scanBarcode(BuildContext context) async {
   bool doneScanning = false;
   List<String> scannedValues = [];
 
@@ -29,7 +29,7 @@ Future<void> scanBarcode() async {
       doneScanning = true;
     }
   }
-
+  Navigator.pop(context, scannedValues);
   FFAppState().barcodeValues =
       scannedValues; // Store the value in barcodeValues
 }

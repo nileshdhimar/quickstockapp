@@ -126,7 +126,9 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    await actions.scanBarcode();
+                    await actions.scanBarcode(
+                      context,
+                    );
                     setState(() {});
                   },
                   text: 'Button',
