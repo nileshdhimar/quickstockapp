@@ -29,7 +29,7 @@ Future<void> scanBarcode(BuildContext context) async {
       doneScanning = true;
     }
   }
-  Navigator.pop(context, scannedValues);
+  //Navigator.pop(context, scannedValues);
   FFAppState().barcodeValues =
       scannedValues; // Store the value in barcodeValues
 }
