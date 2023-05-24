@@ -94,6 +94,7 @@ class _ChangItemsWidgetState extends State<ChangItemsWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

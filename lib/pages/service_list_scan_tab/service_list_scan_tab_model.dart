@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -14,16 +15,17 @@ import 'package:provider/provider.dart';
 class ServiceListScanTabModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for serialno_text widget.
-  TextEditingController? serialnoTextController;
-  String? Function(BuildContext, String?)? serialnoTextControllerValidator;
+  // State field(s) for serialNumberController widget.
+  TextEditingController? serialNumberControllerController;
+  String? Function(BuildContext, String?)?
+      serialNumberControllerControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    serialnoTextController?.dispose();
+    serialNumberControllerController?.dispose();
   }
 
   /// Additional helper methods are added here.

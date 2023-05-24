@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -63,6 +63,7 @@ class _TestingWidgetState extends State<TestingWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Container(
             width: MediaQuery.of(context).size.width * 1.0,
             height: MediaQuery.of(context).size.height * 1.0,
@@ -126,9 +127,13 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    await actions.scanBarcode(
-                      context,
+                    _model.serialNo = await FlutterBarcodeScanner.scanBarcode(
+                      '#C62828', // scanning line color
+                      'Cancel', // cancel button text
+                      true, // whether to show the flash icon
+                      ScanMode.BARCODE,
                     );
+
                     setState(() {});
                   },
                   text: 'Button',
@@ -150,39 +155,17 @@ class _TestingWidgetState extends State<TestingWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                Builder(
-                  builder: (context) {
-                    final serialnoList = FFAppState().barcodeValues.toList();
-                    return RefreshIndicator(
-                      onRefresh: () async {
-                        setState(() {});
-                      },
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: serialnoList.length,
-                        itemBuilder: (context, serialnoListIndex) {
-                          final serialnoListItem =
-                              serialnoList[serialnoListIndex];
-                          return ListTile(
-                            title: Text(
-                              serialnoListItem,
-                              style: FlutterFlowTheme.of(context).headlineSmall,
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).accent2,
-                              size: 20.0,
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
-                          );
-                        },
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      valueOrDefault<String>(
+                        _model.serialNo,
+                        'No Scanned',
                       ),
-                    );
-                  },
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ],
                 ),
               ],
             ),

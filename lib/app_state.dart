@@ -76,6 +76,13 @@ class FFAppState extends ChangeNotifier {
     _imageUplaod.removeAt(_index);
   }
 
+  void updateImageUplaodAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_imageUplaod[_index]);
+  }
+
   List<String> _urlImages = [];
   List<String> get urlImages => _urlImages;
   set urlImages(List<String> _value) {
@@ -92,6 +99,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromUrlImages(int _index) {
     _urlImages.removeAt(_index);
+  }
+
+  void updateUrlImagesAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_urlImages[_index]);
   }
 
   List<String> _serialNo = ['barcodeScan'];
@@ -112,6 +126,13 @@ class FFAppState extends ChangeNotifier {
     _serialNo.removeAt(_index);
   }
 
+  void updateSerialNoAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_serialNo[_index]);
+  }
+
   List<String> _barcodeValues = [];
   List<String> get barcodeValues => _barcodeValues;
   set barcodeValues(List<String> _value) {
@@ -128,6 +149,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromBarcodeValues(int _index) {
     _barcodeValues.removeAt(_index);
+  }
+
+  void updateBarcodeValuesAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_barcodeValues[_index]);
   }
 
   List<String> _scannedValues = [];
@@ -148,6 +176,13 @@ class FFAppState extends ChangeNotifier {
     _scannedValues.removeAt(_index);
   }
 
+  void updateScannedValuesAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_scannedValues[_index]);
+  }
+
   List<String> _textList = [];
   List<String> get textList => _textList;
   set textList(List<String> _value) {
@@ -164,6 +199,44 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromTextList(int _index) {
     _textList.removeAt(_index);
+  }
+
+  void updateTextListAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_textList[_index]);
+  }
+
+  List<String> _serialNumbers = [];
+  List<String> get serialNumbers => _serialNumbers;
+  set serialNumbers(List<String> _value) {
+    _serialNumbers = _value;
+  }
+
+  void addToSerialNumbers(String _value) {
+    _serialNumbers.add(_value);
+  }
+
+  void removeFromSerialNumbers(String _value) {
+    _serialNumbers.remove(_value);
+  }
+
+  void removeAtIndexFromSerialNumbers(int _index) {
+    _serialNumbers.removeAt(_index);
+  }
+
+  void updateSerialNumbersAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_serialNumbers[_index]);
+  }
+
+  String _barcodeNo = '';
+  String get barcodeNo => _barcodeNo;
+  set barcodeNo(String _value) {
+    _barcodeNo = _value;
   }
 }
 

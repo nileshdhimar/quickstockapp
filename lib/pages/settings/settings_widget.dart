@@ -111,6 +111,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

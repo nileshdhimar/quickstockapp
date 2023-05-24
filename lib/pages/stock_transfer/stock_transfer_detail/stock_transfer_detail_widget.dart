@@ -80,6 +80,7 @@ class _StockTransferDetailWidgetState extends State<StockTransferDetailWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

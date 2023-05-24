@@ -85,6 +85,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

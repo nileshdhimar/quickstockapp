@@ -83,6 +83,7 @@ class _StockOrderListingDetailVerifyTABPopupWidgetState
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

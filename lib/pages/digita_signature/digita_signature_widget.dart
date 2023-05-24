@@ -79,6 +79,7 @@ class _DigitaSignatureWidgetState extends State<DigitaSignatureWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

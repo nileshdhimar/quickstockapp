@@ -82,6 +82,7 @@ class _WholesaleAllDetailWidgetState extends State<WholesaleAllDetailWidget> {
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

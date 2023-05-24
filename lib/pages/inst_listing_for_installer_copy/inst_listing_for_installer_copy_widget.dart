@@ -85,6 +85,7 @@ class _InstListingForInstallerCopyWidgetState
           elevation: 0.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -60,7 +61,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
     super.initState();
     _model = createModel(context, () => ServiceListScanTabModel());
 
-    _model.serialnoTextController ??= TextEditingController();
+    _model.serialNumberControllerController ??= TextEditingController();
   }
 
   @override
@@ -278,9 +279,25 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: _model.serialnoTextController,
+                                    controller:
+                                        _model.serialNumberControllerController,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.serialNumberControllerController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        setState(() {
+                                          FFAppState().barcodeNo = _model
+                                              .serialNumberControllerController
+                                              .text;
+                                        });
+                                      },
+                                    ),
                                     onFieldSubmitted: (_) async {
-                                      setState(() {});
+                                      setState(() {
+                                        FFAppState().barcodeNo = _model
+                                            .serialNumberControllerController
+                                            .text;
+                                      });
                                     },
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -329,7 +346,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                         ),
                                     maxLines: null,
                                     validator: _model
-                                        .serialnoTextControllerValidator
+                                        .serialNumberControllerControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -361,6 +378,24 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               context,
                                             );
                                             setState(() {});
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('MESS'),
+                                                  content: Text(
+                                                      FFAppState().barcodeNo),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                           },
                                         ),
                                       ),
@@ -452,7 +487,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                serialnoListItem,
+                                                FFAppState().barcodeNo,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -524,14 +559,10 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Icon(
-                                Icons.list_alt_outlined,
-                                color: FlutterFlowTheme.of(context).bottomMenu,
-                                size: 32.0,
-                              ),
+                            Icon(
+                              Icons.list_alt_outlined,
+                              color: FlutterFlowTheme.of(context).bottomMenu,
+                              size: 32.0,
                             ),
                             Text(
                               'Detail',
@@ -574,17 +605,13 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: Icon(
-                                    Icons.qr_code_scanner_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .bottomMenuActive,
-                                    size: 32.0,
-                                  ).animateOnPageLoad(animationsMap[
-                                      'iconOnPageLoadAnimation1']!),
-                                ),
+                                Icon(
+                                  Icons.qr_code_scanner_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .bottomMenuActive,
+                                  size: 32.0,
+                                ).animateOnPageLoad(
+                                    animationsMap['iconOnPageLoadAnimation1']!),
                                 Text(
                                   'Scan',
                                   style: FlutterFlowTheme.of(context)
@@ -620,17 +647,12 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Icon(
-                                  Icons.photo_outlined,
-                                  color:
-                                      FlutterFlowTheme.of(context).bottomMenu,
-                                  size: 32.0,
-                                ).animateOnPageLoad(
-                                    animationsMap['iconOnPageLoadAnimation2']!),
-                              ),
+                              Icon(
+                                Icons.photo_outlined,
+                                color: FlutterFlowTheme.of(context).bottomMenu,
+                                size: 32.0,
+                              ).animateOnPageLoad(
+                                  animationsMap['iconOnPageLoadAnimation2']!),
                               Text(
                                 'Photos',
                                 style: FlutterFlowTheme.of(context)

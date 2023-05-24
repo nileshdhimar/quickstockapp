@@ -116,6 +116,7 @@ class _InstListingForInstallerWidgetState
               elevation: 0.0,
             ),
             body: SafeArea(
+              top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
