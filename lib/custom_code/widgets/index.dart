@@ -1,3 +1,4 @@
 export 'real_time.dart' show RealTime;
 export 'date_selector.dart' show DateSelector;
 export 'my_widget.dart' show MyWidget;
+export 'barcode.dart' show Barcode;
