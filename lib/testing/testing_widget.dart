@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -127,14 +127,9 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    _model.serialNo = await FlutterBarcodeScanner.scanBarcode(
-                      '#C62828', // scanning line color
-                      'Cancel', // cancel button text
-                      true, // whether to show the flash icon
-                      ScanMode.BARCODE,
+                    await actions.scanBarcodeCopy(
+                      context,
                     );
-
-                    setState(() {});
                   },
                   text: 'Button',
                   options: FFButtonOptions(
@@ -155,17 +150,28 @@ class _TestingWidgetState extends State<TestingWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        _model.serialNo,
-                        'No Scanned',
+                Builder(
+                  builder: (context) {
+                    final scanBarcode = FFAppState().barcodeValues.toList();
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        setState(() {});
+                      },
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: scanBarcode.length,
+                        itemBuilder: (context, scanBarcodeIndex) {
+                          final scanBarcodeItem = scanBarcode[scanBarcodeIndex];
+                          return Text(
+                            scanBarcodeItem,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          );
+                        },
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ],
             ),
