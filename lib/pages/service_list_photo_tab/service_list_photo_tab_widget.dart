@@ -1,17 +1,10 @@
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/components/custom_photo_upload/custom_photo_upload_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'service_list_photo_tab_model.dart';
 export 'service_list_photo_tab_model.dart';
@@ -24,27 +17,11 @@ class ServiceListPhotoTabWidget extends StatefulWidget {
       _ServiceListPhotoTabWidgetState();
 }
 
-class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
-    with TickerProviderStateMixin {
+class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget> {
   late ServiceListPhotoTabModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, -20.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -72,372 +49,306 @@ class _ServiceListPhotoTabWidgetState extends State<ServiceListPhotoTabWidget>
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).appBar,
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 28.0,
-            borderWidth: 1.0,
-            buttonSize: 56.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).bottomMenu,
-              size: 22.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              hoverColor: FlutterFlowTheme.of(context).appBar,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 30.0,
+              ),
+              onPressed: () async {
+                _model.userInfoOutput = await GetUserInfoCall.call(
+                  userId: getJsonField(
+                    FFAppState().UserInfo,
+                    r'''$.id''',
+                  ),
+                  token: FFAppState().Token,
+                  tenantId: FFAppState().TenantId,
+                );
+                if ((_model.userInfoOutput?.succeeded ?? true)) {
+                  setState(() {
+                    FFAppState().Token = FFAppState().Token;
+                    FFAppState().UserInfo = getJsonField(
+                      FFAppState().UserInfo,
+                      r'''$.id''',
+                    );
+                  });
+                  if (getJsonField(
+                        FFAppState().UserInfo,
+                        r'''$.result.isInstaller''',
+                      ) ==
+                      true) {
+                    context.pushNamed('Dashboard-Installer');
+                  } else {
+                    context.pushNamed('Dashboard');
+                  }
+                } else {
+                  context.pushNamed('Login');
+                }
+
+                setState(() {});
+              },
             ),
-            onPressed: () async {
-              context.pushNamed('ServiceList');
-            },
           ),
           title: Text(
-            'Services No. : 10223',
+            'Images',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'DM Sans',
-                  color: FlutterFlowTheme.of(context).bottomMenu,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-              child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 8.0,
-                borderWidth: 0.0,
-                buttonSize: 44.0,
-                fillColor: FlutterFlowTheme.of(context).bottomMenu,
-                icon: Icon(
-                  Icons.add,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 24.0,
-                ),
-                onPressed: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    enableDrag: false,
-                    context: context,
-                    builder: (bottomSheetContext) {
-                      return GestureDetector(
-                        onTap: () =>
-                            FocusScope.of(context).requestFocus(_unfocusNode),
-                        child: Padding(
-                          padding: MediaQuery.of(bottomSheetContext).viewInsets,
-                          child: CustomPhotoUploadWidget(),
-                        ),
-                      );
-                    },
-                  ).then((value) => setState(() {}));
-                },
-              ),
-            ),
-          ],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              width: 100.0,
-              height: MediaQuery.of(context).size.height * 0.78,
-              decoration: BoxDecoration(
-                color: Color(0x00FFFFFF),
-              ),
-              child: SingleChildScrollView(
-                primary: false,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.68,
-                        decoration: BoxDecoration(
-                          color: Color(0x00413C73),
-                        ),
-                        child: Column(
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 45.0, 20.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final imageUpload =
-                                      FFAppState().urlImages.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: imageUpload.length,
-                                    itemBuilder: (context, imageUploadIndex) {
-                                      final imageUploadItem =
-                                          imageUpload[imageUploadIndex];
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.95, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child:
-                                                      FlutterFlowExpandedImageView(
-                                                    image: CachedNetworkImage(
-                                                      imageUrl: valueOrDefault<
-                                                          String>(
-                                                        imageUploadItem,
-                                                        'Image',
-                                                      ),
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                    allowRotation: true,
-                                                    tag: valueOrDefault<String>(
-                                                      imageUploadItem,
-                                                      'Image' +
-                                                          '$imageUploadIndex',
-                                                    ),
-                                                    useHeroAnimation: true,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 15.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('ForgotPassword');
+                                },
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.89,
+                                  height: 60.0,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 6.0,
+                                        color: Color(0x23000000),
+                                        offset: Offset(0.0, 0.0),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                            'ServiceList-OldPhotoTab');
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Icon(
+                                                    Icons.image,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                            onLongPress: () async {},
-                                            child: Hero(
-                                              tag: valueOrDefault<String>(
-                                                imageUploadItem,
-                                                'Image' + '$imageUploadIndex',
-                                              ),
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      valueOrDefault<String>(
-                                                    imageUploadItem,
-                                                    'Image',
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Old System Photos',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'DM Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                    ),
                                                   ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.35,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.15,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                                ],
                                               ),
+                                            ],
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.65, 0.0),
+                                            child: Icon(
+                                              Icons.keyboard_arrow_right,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Upload',
-                        icon: Icon(
-                          Icons.cloud_upload,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'DM Sans',
-                                color: FlutterFlowTheme.of(context).bottomMenu,
-                                fontSize: 14.0,
-                              ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).bottomMenuBar,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 100.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color: Color(0x00EEEEEE),
-                        ),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('ServiceList-DetailTab');
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.list_alt_outlined,
-                                color: FlutterFlowTheme.of(context).bottomMenu,
-                                size: 32.0,
-                              ),
-                              Text(
-                                'Detail',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'DM Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .bottomMenu,
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('ServiceList-ScanTab');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 80.0,
-                          decoration: BoxDecoration(
-                            color: Color(0x00EEEEEE),
-                          ),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed('ServiceList-ScanTab');
-                            },
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.qr_code_scanner_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).bottomMenu,
-                                  size: 32.0,
-                                ),
-                                Text(
-                                  'Scan',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'DM Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .bottomMenu,
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.normal,
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 15.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('ForgotPassword');
+                                },
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.89,
+                                  height: 60.0,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 6.0,
+                                        color: Color(0x23000000),
+                                        offset: Offset(0.0, 0.0),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                            'ServiceList-NewPhotoTab');
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Icon(
+                                                    Icons.image,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'New System Photos',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'DM Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.65, 0.0),
+                                            child: Icon(
+                                              Icons.keyboard_arrow_right,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color: Color(0x00EEEEEE),
-                        ),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('ServiceList-PhotoTab');
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.photo_outlined,
-                                color: FlutterFlowTheme.of(context)
-                                    .bottomMenuActive,
-                                size: 32.0,
-                              ).animateOnPageLoad(
-                                  animationsMap['iconOnPageLoadAnimation']!),
-                              Text(
-                                'Photos',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'DM Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .bottomMenuActive,
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
                                     ),
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

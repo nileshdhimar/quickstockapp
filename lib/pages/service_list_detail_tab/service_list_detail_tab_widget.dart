@@ -516,7 +516,7 @@ class _ServiceListDetailTabWidgetState extends State<ServiceListDetailTabWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ServiceList-PhotoTab');
+                            context.pushNamed('ServiceList-OldPhotoTab');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

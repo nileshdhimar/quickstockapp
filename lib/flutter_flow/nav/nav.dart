@@ -43,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : SplashWidget(),
+          : TestingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -61,7 +61,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : SplashWidget(),
+              : TestingWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -337,9 +337,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ServiceListWidget(),
         ),
         FFRoute(
-          name: 'ServiceList-PhotoTab',
-          path: '/serviceListPhotoTab',
-          builder: (context, params) => ServiceListPhotoTabWidget(),
+          name: 'ServiceList-OldPhotoTab',
+          path: '/serviceListOldPhotoTab',
+          builder: (context, params) => ServiceListOldPhotoTabWidget(),
         ),
         FFRoute(
           name: 'ServiceList-ScanTab',
@@ -352,14 +352,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ServiceListDetailTabWidget(),
         ),
         FFRoute(
-          name: 'ServiceList-PhotoTabCopy',
+          name: 'ServiceList-PhotoTabCopy1',
           path: '/serviceListPhotoTabCopy',
-          builder: (context, params) => ServiceListPhotoTabCopyWidget(),
+          builder: (context, params) => ServiceListPhotoTabCopy1Widget(),
         ),
         FFRoute(
           name: 'testing',
           path: '/testing',
           builder: (context, params) => TestingWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-PhotoTab',
+          path: '/serviceListPhotoTab',
+          builder: (context, params) => ServiceListPhotoTabWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-NewPhotoTab',
+          path: '/serviceListNewPhotoTab',
+          builder: (context, params) => ServiceListNewPhotoTabWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,

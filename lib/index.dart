@@ -101,12 +101,16 @@ export '/pages/inst_listing_for_installer/inst_listing_for_installer_widget.dart
 export '/pages/inst_listing_for_installer_copy/inst_listing_for_installer_copy_widget.dart'
     show InstListingForInstallerCopyWidget;
 export '/pages/service_list/service_list_widget.dart' show ServiceListWidget;
-export '/pages/service_list_photo_tab/service_list_photo_tab_widget.dart'
-    show ServiceListPhotoTabWidget;
+export '/pages/service_list_old_photo_tab/service_list_old_photo_tab_widget.dart'
+    show ServiceListOldPhotoTabWidget;
 export '/pages/service_list_scan_tab/service_list_scan_tab_widget.dart'
     show ServiceListScanTabWidget;
 export '/pages/service_list_detail_tab/service_list_detail_tab_widget.dart'
     show ServiceListDetailTabWidget;
-export '/pages/service_list_photo_tab_copy/service_list_photo_tab_copy_widget.dart'
-    show ServiceListPhotoTabCopyWidget;
+export '/pages/service_list_photo_tab_copy1/service_list_photo_tab_copy1_widget.dart'
+    show ServiceListPhotoTabCopy1Widget;
 export '/testing/testing_widget.dart' show TestingWidget;
+export '/pages/service_list_photo_tab/service_list_photo_tab_widget.dart'
+    show ServiceListPhotoTabWidget;
+export '/pages/service_list_new_photo_tab/service_list_new_photo_tab_widget.dart'
+    show ServiceListNewPhotoTabWidget;

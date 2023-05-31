@@ -206,7 +206,7 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('ServiceList-PhotoTab');
+                  context.pushNamed('ServiceList-OldPhotoTab');
                 },
               ),
             ],

@@ -10,20 +10,21 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'service_list_photo_tab_copy_model.dart';
-export 'service_list_photo_tab_copy_model.dart';
+import 'service_list_photo_tab_copy1_model.dart';
+export 'service_list_photo_tab_copy1_model.dart';
 
-class ServiceListPhotoTabCopyWidget extends StatefulWidget {
-  const ServiceListPhotoTabCopyWidget({Key? key}) : super(key: key);
+class ServiceListPhotoTabCopy1Widget extends StatefulWidget {
+  const ServiceListPhotoTabCopy1Widget({Key? key}) : super(key: key);
 
   @override
-  _ServiceListPhotoTabCopyWidgetState createState() =>
-      _ServiceListPhotoTabCopyWidgetState();
+  _ServiceListPhotoTabCopy1WidgetState createState() =>
+      _ServiceListPhotoTabCopy1WidgetState();
 }
 
-class _ServiceListPhotoTabCopyWidgetState
-    extends State<ServiceListPhotoTabCopyWidget> with TickerProviderStateMixin {
-  late ServiceListPhotoTabCopyModel _model;
+class _ServiceListPhotoTabCopy1WidgetState
+    extends State<ServiceListPhotoTabCopy1Widget>
+    with TickerProviderStateMixin {
+  late ServiceListPhotoTabCopy1Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -46,7 +47,7 @@ class _ServiceListPhotoTabCopyWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ServiceListPhotoTabCopyModel());
+    _model = createModel(context, () => ServiceListPhotoTabCopy1Model());
   }
 
   @override
@@ -275,7 +276,7 @@ class _ServiceListPhotoTabCopyWidgetState
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('ServiceList-PhotoTabCopy');
+                            context.pushNamed('ServiceList-PhotoTabCopy1');
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
