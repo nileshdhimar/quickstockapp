@@ -25,8 +25,8 @@ class ScannerWidget extends StatefulWidget {
 }
 
 class _ScannerWidgetState extends State<ScannerWidget> {
+  List<String> barcodeList = [];
   String scannedBarcode = '';
-  bool showScannerOverlay = false;
 
   Future<void> scanBarcode() async {
     String barcode = await FlutterBarcodeScanner.scanBarcode(
@@ -39,40 +39,35 @@ class _ScannerWidgetState extends State<ScannerWidget> {
     if (barcode != '-1') {
       setState(() {
         scannedBarcode = barcode;
+        barcodeList.add(barcode);
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Container(
-          width: widget.width,
-          height: widget.height,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Scanned Barcode: $scannedBarcode'),
-                SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () async {
-                    await scanBarcode();
-                  },
-                  child: Text('Scan Barcode'),
-                ),
-              ],
-            ),
+        RaisedButton(
+          onPressed: () async {
+            await scanBarcode();
+          },
+          child: Text('Scan Barcode'),
+        ),
+        SizedBox(height: 16),
+        Text('Scanned Barcode: $scannedBarcode'),
+        SizedBox(height: 16),
+        Text('Barcode List:'),
+        Expanded(
+          child: ListView.builder(
+            itemCount: barcodeList.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(barcodeList[index]),
+              );
+            },
           ),
         ),
-        if (showScannerOverlay)
-          Container(
-            color: Colors.black.withOpacity(0.7),
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
       ],
     );
   }
