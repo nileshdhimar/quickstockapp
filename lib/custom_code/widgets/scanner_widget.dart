@@ -25,46 +25,43 @@ class ScannerWidget extends StatefulWidget {
 }
 
 class _ScannerWidgetState extends State<ScannerWidget> {
-  List<String> barcodeList = [];
+  String scannedBarcode = '';
+
+  Future<void> scanBarcode() async {
+    String barcode = await FlutterBarcodeScanner.scanBarcode(
+      '#ff6666', // Custom scanner color
+      'Cancel', // Cancel button text
+      true, // Show flash option
+      ScanMode.BARCODE, // Scan mode (supports QR codes too)
+    );
+
+    if (barcode != '-1') {
+      setState(() {
+        scannedBarcode = barcode;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: widget.width,
-          height: widget.height,
-          child: Center(
-            child: ElevatedButton(
+    return Container(
+      width: widget.width,
+      height: widget.height,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
               onPressed: () async {
-                String barcode = await FlutterBarcodeScanner.scanBarcode(
-                  '#ff6666',
-                  'Cancel',
-                  true,
-                  ScanMode.BARCODE,
-                );
-
-                if (barcode != '-1') {
-                  setState(() {
-                    barcodeList.add(barcode);
-                  });
-                }
+                await scanBarcode();
               },
               child: Text('Scan Barcode'),
             ),
-          ),
+            SizedBox(height: 16),
+            Text('Scanned Barcode: $scannedBarcode'),
+          ],
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: barcodeList.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(barcodeList[index]),
-              );
-            },
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
