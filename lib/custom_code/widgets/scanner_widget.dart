@@ -26,6 +26,7 @@ class ScannerWidget extends StatefulWidget {
 
 class _ScannerWidgetState extends State<ScannerWidget> {
   String scannedBarcode = '';
+  bool showScannerOverlay = false;
 
   Future<void> scanBarcode() async {
     String barcode = await FlutterBarcodeScanner.scanBarcode(
@@ -44,24 +45,35 @@ class _ScannerWidgetState extends State<ScannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: widget.width,
-      height: widget.height,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () async {
-                await scanBarcode();
-              },
-              child: Text('Scan Barcode'),
+    return Stack(
+      children: [
+        Container(
+          width: widget.width,
+          height: widget.height,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Scanned Barcode: $scannedBarcode'),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () async {
+                    await scanBarcode();
+                  },
+                  child: Text('Scan Barcode'),
+                ),
+              ],
             ),
-            SizedBox(height: 16),
-            Text('Scanned Barcode: $scannedBarcode'),
-          ],
+          ),
         ),
-      ),
+        if (showScannerOverlay)
+          Container(
+            color: Colors.black.withOpacity(0.7),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+      ],
     );
   }
 }
