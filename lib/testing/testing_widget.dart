@@ -122,10 +122,10 @@ class _TestingWidgetState extends State<TestingWidget> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 1.0,
-                  height: 100.0,
-                  child: custom_widgets.BarcodeScannerScreen(
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  child: custom_widgets.ScannerWidget(
                     width: MediaQuery.of(context).size.width * 1.0,
-                    height: 100.0,
+                    height: MediaQuery.of(context).size.height * 0.25,
                   ),
                 ),
               ],
