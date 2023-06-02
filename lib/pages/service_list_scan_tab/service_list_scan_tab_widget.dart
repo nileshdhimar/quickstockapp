@@ -475,7 +475,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               Builder(
                                 builder: (context) {
                                   final serialnoList =
-                                      _model.barcodeOutput!.toList();
+                                      _model.brCodeList.toList();
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
