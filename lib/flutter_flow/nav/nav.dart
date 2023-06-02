@@ -344,10 +344,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ServiceList-ScanTab',
           path: '/serviceListScanTab',
-          builder: (context, params) => ServiceListScanTabWidget(
-            serialNoList:
-                params.getParam<String>('serialNoList', ParamType.String, true),
-          ),
+          builder: (context, params) => ServiceListScanTabWidget(),
         ),
         FFRoute(
           name: 'ServiceList-DetailTab',

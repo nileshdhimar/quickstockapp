@@ -15,12 +15,7 @@ import 'service_list_scan_tab_model.dart';
 export 'service_list_scan_tab_model.dart';
 
 class ServiceListScanTabWidget extends StatefulWidget {
-  const ServiceListScanTabWidget({
-    Key? key,
-    this.serialNoList,
-  }) : super(key: key);
-
-  final List<String>? serialNoList;
+  const ServiceListScanTabWidget({Key? key}) : super(key: key);
 
   @override
   _ServiceListScanTabWidgetState createState() =>
