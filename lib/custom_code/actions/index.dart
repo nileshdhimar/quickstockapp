@@ -7,3 +7,4 @@ export 'scan_barcode_copy.dart' show scanBarcodeCopy;
 export 'scan_barcode.dart' show scanBarcode;
 export 'add_text_to_list.dart' show addTextToList;
 export 'enter_barcode.dart' show enterBarcode;
+export 'barcode_scan_stream.dart' show barcodeScanStream;

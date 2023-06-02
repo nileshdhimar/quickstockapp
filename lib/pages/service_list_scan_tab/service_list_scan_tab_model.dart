@@ -19,6 +19,8 @@ class ServiceListScanTabModel extends FlutterFlowModel {
   TextEditingController? serialNumberControllerController;
   String? Function(BuildContext, String?)?
       serialNumberControllerControllerValidator;
+  // Stores action output result for [Custom Action - barcodeScanStream] action in IconButton widget.
+  List<String>? barcodeOutput;
 
   /// Initialization and disposal methods.
 

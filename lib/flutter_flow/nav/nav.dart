@@ -43,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : TestingWidget(),
+          : SplashWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -61,7 +61,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : TestingWidget(),
+              : SplashWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -344,7 +344,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ServiceList-ScanTab',
           path: '/serviceListScanTab',
-          builder: (context, params) => ServiceListScanTabWidget(),
+          builder: (context, params) => ServiceListScanTabWidget(
+            serialNoList:
+                params.getParam<String>('serialNoList', ParamType.String, true),
+          ),
         ),
         FFRoute(
           name: 'ServiceList-DetailTab',
