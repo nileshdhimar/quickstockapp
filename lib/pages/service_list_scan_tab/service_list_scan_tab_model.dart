@@ -13,6 +13,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ServiceListScanTabModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  List<String> brCodeList = [];
+  void addToBrCodeList(String item) => brCodeList.add(item);
+  void removeFromBrCodeList(String item) => brCodeList.remove(item);
+  void removeAtIndexFromBrCodeList(int index) => brCodeList.removeAt(index);
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for serialNumberController widget.

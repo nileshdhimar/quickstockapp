@@ -423,6 +423,10 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                             context,
                                             widget.serialNoList!.toList(),
                                           );
+                                          setState(() {
+                                            _model.brCodeList =
+                                                _model.barcodeOutput!.toList();
+                                          });
 
                                           setState(() {});
                                         },
@@ -493,7 +497,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                                 widget.serialNoList
                                                     ?.contains(serialnoListItem)
                                                     ?.toString(),
-                                                'Barcode',
+                                                'BarcodeOutput',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
