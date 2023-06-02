@@ -9,14 +9,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-Future<List<String>?> barcodeScanStream(
-    BuildContext context, List<String>? barcodeList) async {
+Future<List<String>> barcodeScanStream(
+    BuildContext context, List<String> barcodeList) async {
   // Add your function code here!
-
   FlutterBarcodeScanner.getBarcodeStreamReceiver(
           "#ff6666", "Cancel", true, ScanMode.BARCODE)!
       .listen((barcode) {
-    barcodeList?.add(barcode.toString());
+    barcodeList.add(barcode.toString());
   });
 
   return barcodeList;

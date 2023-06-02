@@ -421,7 +421,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           _model.barcodeOutput =
                                               await actions.barcodeScanStream(
                                             context,
-                                            widget.serialNoList?.toList(),
+                                            widget.serialNoList!.toList(),
                                           );
 
                                           setState(() {});
@@ -471,7 +471,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               Builder(
                                 builder: (context) {
                                   final serialnoList =
-                                      widget.serialNoList?.toList() ?? [];
+                                      _model.barcodeOutput!.toList();
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
@@ -489,14 +489,15 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              FFAppState().barcodeNo,
+                                              valueOrDefault<String>(
+                                                widget.serialNoList
+                                                    ?.contains(serialnoListItem)
+                                                    ?.toString(),
+                                                'Barcode',
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'DM Sans',
-                                                        fontSize: 18.0,
-                                                      ),
+                                                      .bodyMedium,
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
