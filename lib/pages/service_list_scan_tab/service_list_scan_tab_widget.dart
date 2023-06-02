@@ -475,7 +475,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               Builder(
                                 builder: (context) {
                                   final serialnoList =
-                                      _model.brCodeList.toList();
+                                      _model.brCodeList.map((e) => e).toList();
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
@@ -493,13 +493,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              valueOrDefault<String>(
-                                                widget.serialNoList
-                                                    ?.contains(serialnoListIndex
-                                                        .toString())
-                                                    ?.toString(),
-                                                'BarcodeOutput1',
-                                              ),
+                                              serialnoListItem,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
