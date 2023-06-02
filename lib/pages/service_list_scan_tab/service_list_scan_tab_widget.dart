@@ -495,9 +495,10 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                             Text(
                                               valueOrDefault<String>(
                                                 widget.serialNoList
-                                                    ?.contains(serialnoListItem)
+                                                    ?.contains(serialnoListIndex
+                                                        .toString())
                                                     ?.toString(),
-                                                'BarcodeOutput',
+                                                'BarcodeOutput1',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
