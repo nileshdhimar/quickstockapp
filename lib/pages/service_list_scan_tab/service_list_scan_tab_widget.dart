@@ -469,16 +469,14 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                             children: [
                               Builder(
                                 builder: (context) {
-                                  final serialnoList =
-                                      _model.brCodeList.map((e) => e).toList();
+                                  final brList = _model.brCodeList.toList();
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: serialnoList.length,
-                                    itemBuilder: (context, serialnoListIndex) {
-                                      final serialnoListItem =
-                                          serialnoList[serialnoListIndex];
+                                    itemCount: brList.length,
+                                    itemBuilder: (context, brListIndex) {
+                                      final brListItem = brList[brListIndex];
                                       return Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 5.0),
@@ -488,7 +486,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              serialnoListItem,
+                                              brListItem,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
