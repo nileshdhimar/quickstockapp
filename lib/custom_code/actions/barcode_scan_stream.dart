@@ -18,5 +18,7 @@ Future<List<String>> barcodeScanStream(
     barcodeList.add(barcode.toString());
   });
 
+  barcodeList.add("Suresh123");
+
   return barcodeList;
 }
