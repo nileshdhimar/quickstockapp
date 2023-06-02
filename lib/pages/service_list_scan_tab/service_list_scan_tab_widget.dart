@@ -421,7 +421,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           _model.barcodeOutput =
                                               await actions.barcodeScanStream(
                                             context,
-                                            widget.serialNoList!.toList(),
+                                            _model.brCodeList.toList(),
                                           );
                                           setState(() {
                                             _model.brCodeList =
