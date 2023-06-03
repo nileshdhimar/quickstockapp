@@ -27,44 +27,160 @@ class ServiceListScanTab extends StatefulWidget {
 class _ServiceListScanTabState extends State<ServiceListScanTab> {
   List<String> brCodeList = [];
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      barcodeScanStream();
-    });
-  }
-
-  void barcodeScanStream() {
-    FlutterBarcodeScanner.getBarcodeStreamReceiver(
+  Future<void> scanBarcode() async {
+    String barcode = await FlutterBarcodeScanner.scanBarcode(
       "#ff6666",
       "Cancel",
       true,
       ScanMode.BARCODE,
-    )?.listen((barcode) {
-      setState(() {
-        if (barcode != "-1" && barcode != "") {
-          if (!brCodeList.contains(barcode)) {
-            brCodeList.add(barcode);
-          }
+    );
+    setState(() {
+      if (barcode != "-1" && barcode != "") {
+        if (!brCodeList.contains(barcode)) {
+          brCodeList.add(barcode);
         }
-      });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      // barcodeScanStream();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Barcode Scanner'),
-      ),
-      body: ListView.builder(
-        itemCount: brCodeList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(brCodeList[index]),
-          );
-        },
+      body: Column(
+        children: [
+          // Generated code for this Container Widget...
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+            child: Container(
+              width: 100,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).primary,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/shadow-bg.png',
+                  ).image,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 4, 0, 4),
+                                    child: Text(
+                                      'Number :',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'DM Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontSize: 14,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 4, 0, 4),
+                                    child: Text(
+                                      'Customer :',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'DM Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontSize: 14,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 4),
+                                  child: Text(
+                                    '10223',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'DM Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          fontSize: 14,
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 4),
+                                  child: Text(
+                                    'Nilesh Dhimar',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'DM Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          fontSize: 14,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          Expanded(
+            child: ListView.builder(
+              itemCount: brCodeList.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(brCodeList[index]),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

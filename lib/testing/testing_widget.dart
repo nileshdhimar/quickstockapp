@@ -72,10 +72,10 @@ class _TestingWidgetState extends State<TestingWidget> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 1.0,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   child: custom_widgets.ServiceListScanTab(
                     width: MediaQuery.of(context).size.width * 1.0,
-                    height: MediaQuery.of(context).size.height * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.25,
                   ),
                 ),
               ],
