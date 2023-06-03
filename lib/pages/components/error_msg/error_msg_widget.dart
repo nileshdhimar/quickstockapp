@@ -221,10 +221,9 @@ class _ErrorMsgWidgetState extends State<ErrorMsgWidget> {
                                         backgroundColor: Colors.white,
                                         enableDrag: false,
                                         context: context,
-                                        builder: (bottomSheetContext) {
+                                        builder: (context) {
                                           return Padding(
-                                            padding: MediaQuery.of(
-                                                    bottomSheetContext)
+                                            padding: MediaQuery.of(context)
                                                 .viewInsets,
                                             child: SwitchTenantWidget(),
                                           );

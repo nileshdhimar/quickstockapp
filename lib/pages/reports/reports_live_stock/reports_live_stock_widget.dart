@@ -35,11 +35,11 @@ class _ReportsLiveStockWidgetState extends State<ReportsLiveStockWidget> {
         backgroundColor: Colors.transparent,
         enableDrag: false,
         context: context,
-        builder: (bottomSheetContext) {
+        builder: (context) {
           return GestureDetector(
             onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
             child: Padding(
-              padding: MediaQuery.of(bottomSheetContext).viewInsets,
+              padding: MediaQuery.of(context).viewInsets,
               child: DefItemSelModuleWidget(),
             ),
           );

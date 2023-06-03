@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-class BarcodeScannerScreen extends StatefulWidget {
-  const BarcodeScannerScreen({
+class ServiceListScanTab extends StatefulWidget {
+  const ServiceListScanTab({
     Key? key,
     this.width,
     this.height,
@@ -21,11 +21,19 @@ class BarcodeScannerScreen extends StatefulWidget {
   final double? height;
 
   @override
-  _BarcodeScannerScreenState createState() => _BarcodeScannerScreenState();
+  _ServiceListScanTabState createState() => _ServiceListScanTabState();
 }
 
-class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
+class _ServiceListScanTabState extends State<ServiceListScanTab> {
   List<String> brCodeList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      barcodeScanStream();
+    });
+  }
 
   void barcodeScanStream() {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
@@ -42,12 +50,6 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
         }
       });
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    barcodeScanStream();
   }
 
   @override

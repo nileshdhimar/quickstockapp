@@ -236,14 +236,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     backgroundColor: Colors.transparent,
                                     enableDrag: false,
                                     context: context,
-                                    builder: (bottomSheetContext) {
+                                    builder: (context) {
                                       return GestureDetector(
                                         onTap: () => FocusScope.of(context)
                                             .requestFocus(_unfocusNode),
                                         child: Padding(
                                           padding:
-                                              MediaQuery.of(bottomSheetContext)
-                                                  .viewInsets,
+                                              MediaQuery.of(context).viewInsets,
                                           child: ThumbControlWidget(),
                                         ),
                                       );

@@ -1224,16 +1224,16 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                                     Colors.transparent,
                                                 enableDrag: false,
                                                 context: context,
-                                                builder: (bottomSheetContext) {
+                                                builder: (context) {
                                                   return GestureDetector(
                                                     onTap: () =>
                                                         FocusScope.of(context)
                                                             .requestFocus(
                                                                 _unfocusNode),
                                                     child: Padding(
-                                                      padding: MediaQuery.of(
-                                                              bottomSheetContext)
-                                                          .viewInsets,
+                                                      padding:
+                                                          MediaQuery.of(context)
+                                                              .viewInsets,
                                                       child: PanelsListWidget(),
                                                     ),
                                                   );
@@ -1528,8 +1528,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                                       Colors.transparent,
                                                   enableDrag: false,
                                                   context: context,
-                                                  builder:
-                                                      (bottomSheetContext) {
+                                                  builder: (context) {
                                                     return GestureDetector(
                                                       onTap: () =>
                                                           FocusScope.of(context)
@@ -1537,7 +1536,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                                                   _unfocusNode),
                                                       child: Padding(
                                                         padding: MediaQuery.of(
-                                                                bottomSheetContext)
+                                                                context)
                                                             .viewInsets,
                                                         child:
                                                             InverterListWidget(),

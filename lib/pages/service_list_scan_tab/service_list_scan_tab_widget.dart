@@ -413,14 +413,13 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                           size: 26.0,
                                         ),
                                         onPressed: () async {
-                                          _model.barcodeOutput =
+                                          _model.output =
                                               await actions.barcodeScanStream(
-                                            context,
                                             _model.brCodeList.toList(),
                                           );
                                           setState(() {
                                             _model.brCodeList =
-                                                _model.barcodeOutput!.toList();
+                                                _model.output!.toList();
                                           });
 
                                           setState(() {});
