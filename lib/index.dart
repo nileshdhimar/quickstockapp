@@ -114,3 +114,5 @@ export '/pages/service_list_photo_tab/service_list_photo_tab_widget.dart'
     show ServiceListPhotoTabWidget;
 export '/pages/service_list_new_photo_tab/service_list_new_photo_tab_widget.dart'
     show ServiceListNewPhotoTabWidget;
+export '/pages/service_list_scan_tab_copy/service_list_scan_tab_copy_widget.dart'
+    show ServiceListScanTabCopyWidget;
