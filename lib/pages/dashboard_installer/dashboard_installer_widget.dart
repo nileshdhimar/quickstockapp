@@ -929,7 +929,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('ServiceList-DetailTab');
+                                  context.pushNamed('testing');
                                 },
                                 child: Container(
                                   width: 310.0,
