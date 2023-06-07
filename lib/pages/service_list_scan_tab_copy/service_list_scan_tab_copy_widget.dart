@@ -103,9 +103,10 @@ class _ServiceListScanTabCopyWidgetState
                 alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   width: double.infinity,
+                  height: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBtnText,
-                    shape: BoxShape.rectangle,
+                    shape: BoxShape.circle,
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
