@@ -471,7 +471,7 @@ class _ServiceListDetailTabWidgetState extends State<ServiceListDetailTabWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('ServiceList-ScanTab');
+                              context.pushNamed('ServiceList-ScanTabCopy');
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
