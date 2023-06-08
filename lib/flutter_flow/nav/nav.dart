@@ -48,7 +48,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : ServiceListScanTabWidget(),
+          : ServiceListScanTabCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -66,7 +66,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : ServiceListScanTabWidget(),
+              : ServiceListScanTabCopyWidget(),
         ),
         FFRoute(
           name: 'Splash',

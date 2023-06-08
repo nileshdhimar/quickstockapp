@@ -118,107 +118,55 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
           children: [
             Container(
               width: 100.0,
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: MediaQuery.of(context).size.height * 0.85,
               decoration: BoxDecoration(
                 color: Color(0x00FFFFFF),
               ),
-              child: SingleChildScrollView(
-                primary: false,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 15.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 20.0),
-                            child: Container(
-                              width: 100.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primary,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/shadow-bg.png',
-                                  ).image,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 15.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 20.0),
+                          child: Container(
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.asset(
+                                  'assets/images/shadow-bg.png',
+                                ).image,
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 20.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 4.0),
-                                                    child: Text(
-                                                      'Number :',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 4.0),
-                                                    child: Text(
-                                                      'Customer :',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontSize: 14.0,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Column(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 20.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 20.0, 0.0),
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -228,7 +176,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 4.0),
                                                   child: Text(
-                                                    '10223',
+                                                    'Number :',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -246,7 +194,7 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 4.0),
                                                   child: Text(
-                                                    'Nilesh Dhimar',
+                                                    'Customer :',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -261,209 +209,251 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                                                 ),
                                               ],
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 4.0),
+                                                child: Text(
+                                                  '10223',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'DM Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 4.0),
+                                                child: Text(
+                                                  'Nilesh Dhimar',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'DM Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 30.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller:
-                                        _model.serialNumberControllerController,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.serialNumberControllerController',
-                                      Duration(milliseconds: 2000),
-                                      () async {
-                                        setState(() {
-                                          FFAppState().barcodeNo = _model
-                                              .serialNumberControllerController
-                                              .text;
-                                        });
-                                      },
-                                    ),
-                                    onFieldSubmitted: (_) async {
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 30.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  controller:
+                                      _model.serialNumberControllerController,
+                                  onChanged: (_) => EasyDebounce.debounce(
+                                    '_model.serialNumberControllerController',
+                                    Duration(milliseconds: 2000),
+                                    () async {
                                       setState(() {
                                         FFAppState().barcodeNo = _model
                                             .serialNumberControllerController
                                             .text;
                                       });
                                     },
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Serial No',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .txtBoxBdr,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'DM Sans',
-                                          fontSize: 14.0,
-                                        ),
-                                    maxLines: null,
-                                    validator: _model
-                                        .serialNumberControllerControllerValidator
-                                        .asValidator(context),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 5.0, 0.0),
-                                        child: FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 25.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 50.0,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .buttonIcon,
-                                          icon: Icon(
-                                            Icons.add,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            size: 26.0,
-                                          ),
-                                          onPressed: () async {
-                                            await actions.enterBarcode(
-                                              context,
-                                            );
-                                            setState(() {});
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('MESS'),
-                                                  content: Text(
-                                                      FFAppState().barcodeNo),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          },
-                                        ),
+                                  onFieldSubmitted: (_) async {
+                                    setState(() {
+                                      FFAppState().barcodeNo = _model
+                                          .serialNumberControllerController
+                                          .text;
+                                    });
+                                  },
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintText: 'Serial No',
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodySmall,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .txtBoxBdr,
+                                        width: 1.0,
                                       ),
-                                      FlutterFlowIconButton(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'DM Sans',
+                                        fontSize: 14.0,
+                                      ),
+                                  maxLines: null,
+                                  validator: _model
+                                      .serialNumberControllerControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    5.0, 0.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 25.0,
                                         borderWidth: 1.0,
                                         buttonSize: 50.0,
                                         fillColor: FlutterFlowTheme.of(context)
-                                            .txtBoxBdr,
+                                            .buttonIcon,
                                         icon: Icon(
-                                          Icons.qr_code_outlined,
+                                          Icons.add,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .secondary,
                                           size: 26.0,
                                         ),
                                         onPressed: () async {
-                                          _model.output =
-                                              await actions.barcodeScanStream(
-                                            _model.brCodeList.toList(),
+                                          await actions.enterBarcode(
+                                            context,
                                           );
-                                          setState(() {
-                                            _model.brCodeList =
-                                                _model.output!.toList();
-                                          });
-
                                           setState(() {});
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('MESS'),
+                                                content: Text(
+                                                    FFAppState().barcodeNo),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
                                         },
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 5.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Serial No.',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.w600,
+                                    ),
+                                    FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 25.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 50.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .txtBoxBdr,
+                                      icon: Icon(
+                                        Icons.qr_code_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 26.0,
                                       ),
+                                      onPressed: () async {
+                                        _model.output =
+                                            await actions.barcodeScanStream(
+                                          _model.brCodeList.toList(),
+                                        );
+                                        setState(() {
+                                          _model.brCodeList =
+                                              _model.output!.toList();
+                                        });
+
+                                        setState(() {});
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Action',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          Divider(
-                            thickness: 2.0,
-                            color: FlutterFlowTheme.of(context).accent4,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 5.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Serial No.',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'DM Sans',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              Text(
+                                'Action',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'DM Sans',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ],
                           ),
-                          Column(
+                        ),
+                        Divider(
+                          thickness: 2.0,
+                          color: FlutterFlowTheme.of(context).accent4,
+                        ),
+                        SingleChildScrollView(
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Builder(
@@ -521,11 +511,11 @@ class _ServiceListScanTabWidgetState extends State<ServiceListScanTabWidget>
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Expanded(
