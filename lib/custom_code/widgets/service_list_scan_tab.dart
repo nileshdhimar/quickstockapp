@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 //import 'package:quick_stock/custom_code/actions/enter_barcode.dart';
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -110,13 +112,13 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 15),
+                  padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 15),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 15),
                         child: Container(
                           width: 100,
                           decoration: BoxDecoration(
@@ -131,7 +133,7 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                           ),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                                EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +149,7 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 20, 0),
+                                                  0, 0, 10, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -157,7 +159,7 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 4),
                                                 child: Text(
-                                                  'Number :',
+                                                  'Category :',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -175,7 +177,43 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 4, 0, 4),
                                                 child: Text(
-                                                  'Customer :',
+                                                  'Item :',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'DM Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        fontSize: 14,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 4),
+                                                child: Text(
+                                                  'Model :',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'DM Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        fontSize: 14,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 4),
+                                                child: Text(
+                                                  'Scan Count :',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -402,77 +440,69 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                         thickness: 2,
                         color: FlutterFlowTheme.of(context).accent4,
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 300, // Adjust the height as needed
-                            child: Scrollbar(
-                              child: ListView.builder(
-                                //padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                physics: ClampingScrollPhysics(),
-                                itemCount: brCodeList.length,
-                                itemExtent: 35,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    title: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${index + 1}.',
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            fontFamily: 'DM Sans',
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            brCodeList[index],
-                                            textAlign: TextAlign.start,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              brCodeList.removeAt(index);
-                                            });
-                                          },
-                                          child: Container(
-                                            padding:
-                                                EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                            width: 30,
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                color: Colors.transparent,
-                                                width: 1,
-                                              ),
-                                              color: Color(0xFFF8D7DA),
-                                            ),
-                                            child: Icon(
-                                              Icons.delete,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 19,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        child: Scrollbar(
+                          child: ListView.builder(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            //padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            physics: ClampingScrollPhysics(),
+                            itemCount: brCodeList.length,
+                            itemExtent: 35,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${index + 1}.',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontFamily: 'DM Sans',
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
+                                    Expanded(
+                                      child: Text(
+                                        brCodeList[index],
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          brCodeList.removeAt(index);
+                                        });
+                                      },
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          color: Color(0xFFF8D7DA),
+                                        ),
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 19,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
