@@ -1,17 +1,15 @@
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/custom_photo_upload/custom_photo_upload_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'service_list_new_photo_tab_model.dart';
 export 'service_list_new_photo_tab_model.dart';
@@ -156,98 +154,13 @@ class _ServiceListNewPhotoTabWidgetState
                         decoration: BoxDecoration(
                           color: Color(0x00413C73),
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final imageUpload =
-                                      FFAppState().urlImages.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: imageUpload.length,
-                                    itemBuilder: (context, imageUploadIndex) {
-                                      final imageUploadItem =
-                                          imageUpload[imageUploadIndex];
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.95, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child:
-                                                      FlutterFlowExpandedImageView(
-                                                    image: CachedNetworkImage(
-                                                      imageUrl: valueOrDefault<
-                                                          String>(
-                                                        imageUploadItem,
-                                                        'ImageUpload',
-                                                      ),
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                    allowRotation: true,
-                                                    tag: valueOrDefault<String>(
-                                                      imageUploadItem,
-                                                      'ImageUpload' +
-                                                          '$imageUploadIndex',
-                                                    ),
-                                                    useHeroAnimation: true,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            onLongPress: () async {},
-                                            child: Hero(
-                                              tag: valueOrDefault<String>(
-                                                imageUploadItem,
-                                                'ImageUpload' +
-                                                    '$imageUploadIndex',
-                                              ),
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      valueOrDefault<String>(
-                                                    imageUploadItem,
-                                                    'ImageUpload',
-                                                  ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.35,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.15,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 1.0,
+                          height: MediaQuery.of(context).size.height * 1.0,
+                          child: custom_widgets.YourWidget(
+                            width: MediaQuery.of(context).size.width * 1.0,
+                            height: MediaQuery.of(context).size.height * 1.0,
+                          ),
                         ),
                       ),
                     ),
