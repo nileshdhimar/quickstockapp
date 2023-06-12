@@ -189,20 +189,9 @@ class _AddEditItemsWidgetState extends State<AddEditItemsWidget> {
                                       () => _model.dropDownValue1 = val),
                                   width: 320.0,
                                   height: 50.0,
-                                  searchHintTextStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                          ),
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: 'Please select...',
-                                  searchHintText: 'Search for an item...',
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,
@@ -234,20 +223,9 @@ class _AddEditItemsWidgetState extends State<AddEditItemsWidget> {
                                       () => _model.dropDownValue2 = val),
                                   width: 320.0,
                                   height: 50.0,
-                                  searchHintTextStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                          ),
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: 'Select Items',
-                                  searchHintText: 'Search for an item...',
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,

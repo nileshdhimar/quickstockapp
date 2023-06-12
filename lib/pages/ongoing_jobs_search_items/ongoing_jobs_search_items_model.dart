@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 class OngoingJobsSearchItemsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
@@ -37,6 +38,7 @@ class OngoingJobsSearchItemsModel extends FlutterFlowModel {
   void initState(BuildContext context) {}
 
   void dispose() {
+    unfocusNode.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
@@ -44,6 +46,8 @@ class OngoingJobsSearchItemsModel extends FlutterFlowModel {
     textController5?.dispose();
     textController6?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

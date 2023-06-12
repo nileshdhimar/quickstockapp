@@ -27,7 +27,6 @@ class _WholesaleOrdersAllWidgetState extends State<WholesaleOrdersAllWidget>
   late WholesaleOrdersAllModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'iconOnPageLoadAnimation': AnimationInfo(
@@ -56,7 +55,6 @@ class _WholesaleOrdersAllWidgetState extends State<WholesaleOrdersAllWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -65,7 +63,7 @@ class _WholesaleOrdersAllWidgetState extends State<WholesaleOrdersAllWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -221,7 +219,7 @@ class _WholesaleOrdersAllWidgetState extends State<WholesaleOrdersAllWidget>
                                       builder: (context) {
                                         return GestureDetector(
                                           onTap: () => FocusScope.of(context)
-                                              .requestFocus(_unfocusNode),
+                                              .requestFocus(_model.unfocusNode),
                                           child: Padding(
                                             padding: MediaQuery.of(context)
                                                 .viewInsets,

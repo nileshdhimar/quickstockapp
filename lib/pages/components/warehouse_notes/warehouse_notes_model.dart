@@ -23,6 +23,8 @@ class WarehouseNotesModel extends FlutterFlowModel {
     tenentController?.dispose();
   }
 
+  /// Action blocks are added here.
+
   /// Additional helper methods are added here.
 
 }

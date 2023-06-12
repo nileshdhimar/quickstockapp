@@ -25,7 +25,6 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
   late DashboardInstallerModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,7 +36,6 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -46,7 +44,7 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -1226,10 +1224,10 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                                 context: context,
                                                 builder: (context) {
                                                   return GestureDetector(
-                                                    onTap: () =>
-                                                        FocusScope.of(context)
-                                                            .requestFocus(
-                                                                _unfocusNode),
+                                                    onTap: () => FocusScope.of(
+                                                            context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode),
                                                     child: Padding(
                                                       padding:
                                                           MediaQuery.of(context)
@@ -1530,10 +1528,10 @@ class _DashboardInstallerWidgetState extends State<DashboardInstallerWidget> {
                                                   context: context,
                                                   builder: (context) {
                                                     return GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(context)
-                                                              .requestFocus(
-                                                                  _unfocusNode),
+                                                      onTap: () => FocusScope
+                                                              .of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode),
                                                       child: Padding(
                                                         padding: MediaQuery.of(
                                                                 context)

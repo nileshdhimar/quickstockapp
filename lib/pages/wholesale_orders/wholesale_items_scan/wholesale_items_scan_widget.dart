@@ -23,7 +23,6 @@ class _WholesaleItemsScanWidgetState extends State<WholesaleItemsScanWidget> {
   late WholesaleItemsScanModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -38,7 +37,6 @@ class _WholesaleItemsScanWidgetState extends State<WholesaleItemsScanWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -47,7 +45,7 @@ class _WholesaleItemsScanWidgetState extends State<WholesaleItemsScanWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -639,8 +637,8 @@ class _WholesaleItemsScanWidgetState extends State<WholesaleItemsScanWidget> {
                       context: context,
                       builder: (context) {
                         return GestureDetector(
-                          onTap: () =>
-                              FocusScope.of(context).requestFocus(_unfocusNode),
+                          onTap: () => FocusScope.of(context)
+                              .requestFocus(_model.unfocusNode),
                           child: Padding(
                             padding: MediaQuery.of(context).viewInsets,
                             child: ConfirmOrderItemPopupWidget(),

@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 class WholesaleOrdersScannedOrderModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
@@ -29,9 +30,12 @@ class WholesaleOrdersScannedOrderModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     textController?.dispose();
     wholesaleOrderListModel.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

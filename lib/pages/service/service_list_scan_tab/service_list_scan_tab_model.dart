@@ -1,0 +1,45 @@
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+class ServiceListScanTabModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  List<String> brCodeList = [];
+  void addToBrCodeList(String item) => brCodeList.add(item);
+  void removeFromBrCodeList(String item) => brCodeList.remove(item);
+  void removeAtIndexFromBrCodeList(int index) => brCodeList.removeAt(index);
+  void updateBrCodeListAtIndex(int index, Function(String) updateFn) =>
+      brCodeList[index] = updateFn(brCodeList[index]);
+
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+  // State field(s) for serialNumberController widget.
+  TextEditingController? serialNumberControllerController;
+  String? Function(BuildContext, String?)?
+      serialNumberControllerControllerValidator;
+
+  /// Initialization and disposal methods.
+
+  void initState(BuildContext context) {}
+
+  void dispose() {
+    unfocusNode.dispose();
+    serialNumberControllerController?.dispose();
+  }
+
+  /// Action blocks are added here.
+
+  /// Additional helper methods are added here.
+
+}

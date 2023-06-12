@@ -48,7 +48,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : ServiceListScanTabCopyWidget(),
+          : ServiceListNewPhotoTabWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -66,7 +66,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : ServiceListScanTabCopyWidget(),
+              : ServiceListNewPhotoTabWidget(),
         ),
         FFRoute(
           name: 'Splash',
@@ -380,6 +380,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ServiceList-ScanTabCopy',
           path: '/serviceListScanTabCopy',
           builder: (context, params) => ServiceListScanTabCopyWidget(),
+        ),
+        FFRoute(
+          name: 'testingCopy',
+          path: '/testingCopy',
+          builder: (context, params) => TestingCopyWidget(),
+        ),
+        FFRoute(
+          name: 'TestListview',
+          path: '/testListview',
+          builder: (context, params) => TestListviewWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-Panel_Inverter-Detail',
+          path: '/serviceListPanelInverterDetail',
+          builder: (context, params) => ServiceListPanelInverterDetailWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-Panel_Inverter-Photo',
+          path: '/serviceListPanelInverterPhoto',
+          builder: (context, params) => ServiceListPanelInverterPhotoWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-Panel_inverter-Scan',
+          path: '/serviceListPanelInverterScan',
+          builder: (context, params) => ServiceListPanelInverterScanWidget(),
+        ),
+        FFRoute(
+          name: 'ServiceList-Panel_inverter-ScanPhoto',
+          path: '/serviceListPanelInverterScanPhoto',
+          builder: (context, params) =>
+              ServiceListPanelInverterScanPhotoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

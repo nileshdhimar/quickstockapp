@@ -22,7 +22,6 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
   late OrderItemDetailModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,7 +36,6 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -46,7 +44,7 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -637,8 +635,8 @@ class _OrderItemDetailWidgetState extends State<OrderItemDetailWidget> {
                       context: context,
                       builder: (context) {
                         return GestureDetector(
-                          onTap: () =>
-                              FocusScope.of(context).requestFocus(_unfocusNode),
+                          onTap: () => FocusScope.of(context)
+                              .requestFocus(_model.unfocusNode),
                           child: Padding(
                             padding: MediaQuery.of(context).viewInsets,
                             child: ConfirmOrderItemPopupWidget(),

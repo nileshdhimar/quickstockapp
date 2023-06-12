@@ -82,9 +82,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateImageUplaodAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_imageUplaod[_index]);
+    _imageUplaod[_index] = updateFn(_imageUplaod[_index]);
   }
 
   List<String> _urlImages = [];
@@ -107,9 +107,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateUrlImagesAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_urlImages[_index]);
+    _urlImages[_index] = updateFn(_urlImages[_index]);
   }
 
   List<String> _serialNo = ['barcodeScan'];
@@ -132,9 +132,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateSerialNoAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_serialNo[_index]);
+    _serialNo[_index] = updateFn(_serialNo[_index]);
   }
 
   List<String> _barcodeValues = [];
@@ -157,9 +157,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateBarcodeValuesAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_barcodeValues[_index]);
+    _barcodeValues[_index] = updateFn(_barcodeValues[_index]);
   }
 
   List<String> _scannedValues = [];
@@ -182,9 +182,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateScannedValuesAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_scannedValues[_index]);
+    _scannedValues[_index] = updateFn(_scannedValues[_index]);
   }
 
   List<String> _textList = [];
@@ -207,9 +207,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateTextListAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_textList[_index]);
+    _textList[_index] = updateFn(_textList[_index]);
   }
 
   List<String> _serialNumbers = [];
@@ -232,9 +232,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateSerialNumbersAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_serialNumbers[_index]);
+    _serialNumbers[_index] = updateFn(_serialNumbers[_index]);
   }
 
   String _barcodeNo = '';

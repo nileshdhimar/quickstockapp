@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 //import 'package:quick_stock/custom_code/actions/enter_barcode.dart';
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -103,6 +105,28 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Visibility(
+        visible: brCodeList.length == 10,
+        child: Container(
+          margin: EdgeInsets.only(bottom: 0.0),
+          child: FloatingActionButton(
+            onPressed: () {
+              // Handle button press
+            },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(Icons.upload),
+            backgroundColor: Colors.blue, // Add desired background color
+            foregroundColor: Colors.white, // Add desired foreground color
+            elevation: 3.0, // Add desired elevation
+            heroTag: null, // Remove hero tag to avoid conflicts
+          ),
+          height: 30.0, // Add desired height
+          width: 150.0, // Add desired width
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
         children: [
           // Generated code for this Column Widget...
@@ -440,70 +464,79 @@ class _ServiceListScanTabState extends State<ServiceListScanTab> {
                         thickness: 2,
                         color: FlutterFlowTheme.of(context).accent4,
                       ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.8,
-                        child: Scrollbar(
-                          child: ListView.builder(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                            //padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemCount: brCodeList.length,
-                            itemExtent: 35,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${index + 1}.',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontFamily: 'DM Sans',
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        brCodeList[index],
-                                        textAlign: TextAlign.start,
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          brCodeList.removeAt(index);
-                                        });
-                                      },
-                                      child: Container(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.transparent,
-                                            width: 1,
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          double screenHeight =
+                              MediaQuery.of(context).size.height;
+                          double remainingHeight = screenHeight *
+                              0.55; // Adjust the percentage as needed
+
+                          return SingleChildScrollView(
+                            child: SizedBox(
+                              height: remainingHeight,
+                              child: Scrollbar(
+                                isAlwaysShown: true,
+                                child: ListView.builder(
+                                  itemCount: brCodeList.length,
+                                  itemExtent: 35,
+                                  shrinkWrap: true,
+                                  physics: ClampingScrollPhysics(),
+                                  padding: EdgeInsets.zero,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: Row(
+                                        children: [
+                                          Text(
+                                            '${index + 1}.',
+                                            style: TextStyle(
+                                              fontFamily: 'DM Sans',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                          color: Color(0xFFF8D7DA),
-                                        ),
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          size: 19,
-                                        ),
+                                          Expanded(
+                                            child: Text(
+                                              brCodeList[index],
+                                              textAlign: TextAlign.start,
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                brCodeList.removeAt(index);
+                                              });
+                                            },
+                                            child: Container(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  0, 0, 0, 0),
+                                              width: 30,
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                  color: Colors.transparent,
+                                                  width: 1,
+                                                ),
+                                                color: Color(0xFFF8D7DA),
+                                              ),
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors
+                                                    .red, // Replace with desired color
+                                                size: 19,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
+                                    );
+                                  },
                                 ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
+                              ),
+                            ),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),

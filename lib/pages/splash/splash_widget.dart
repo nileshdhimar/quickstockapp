@@ -22,7 +22,6 @@ class _SplashWidgetState extends State<SplashWidget>
   late SplashModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'imageOnPageLoadAnimation': AnimationInfo(
@@ -58,7 +57,6 @@ class _SplashWidgetState extends State<SplashWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -67,7 +65,7 @@ class _SplashWidgetState extends State<SplashWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
