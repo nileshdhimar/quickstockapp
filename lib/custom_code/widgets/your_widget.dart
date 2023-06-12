@@ -14,7 +14,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:multiple_images_picker/multiple_images_picker.dart';
-//import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 final ImagePicker _picker = ImagePicker();
 

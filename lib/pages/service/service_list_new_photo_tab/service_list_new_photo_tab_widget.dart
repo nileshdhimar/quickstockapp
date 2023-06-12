@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/custom_photo_upload/custom_photo_upload_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
@@ -101,7 +100,7 @@ class _ServiceListNewPhotoTabWidgetState
                 buttonSize: 44.0,
                 fillColor: FlutterFlowTheme.of(context).bottomMenu,
                 icon: Icon(
-                  Icons.add,
+                  Icons.cloud_upload_sharp,
                   color: FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
@@ -136,7 +135,7 @@ class _ServiceListNewPhotoTabWidgetState
           children: [
             Container(
               width: 100.0,
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.85,
               decoration: BoxDecoration(
                 color: Color(0x00FFFFFF),
               ),
@@ -149,8 +148,8 @@ class _ServiceListNewPhotoTabWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
                       child: Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.68,
+                        width: MediaQuery.of(context).size.width * 1.0,
+                        height: MediaQuery.of(context).size.height * 0.85,
                         decoration: BoxDecoration(
                           color: Color(0x00413C73),
                         ),
@@ -161,41 +160,6 @@ class _ServiceListNewPhotoTabWidgetState
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.height * 1.0,
                           ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Upload',
-                        icon: Icon(
-                          Icons.cloud_upload,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 150.0,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'DM Sans',
-                                color: FlutterFlowTheme.of(context).bottomMenu,
-                                fontSize: 14.0,
-                              ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                          borderRadius: BorderRadius.circular(24.0),
                         ),
                       ),
                     ),
